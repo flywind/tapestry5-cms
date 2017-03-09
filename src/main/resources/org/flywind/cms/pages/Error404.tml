@@ -1,0 +1,5 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+    <p>页面或资源没有找到！</p>
+    <div style="display:none"><t:renderobject object="request"/></div>
+</html>

@@ -1,0 +1,16 @@
+<html t:type="FFLayout" t:title="${message:organization-label}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+		<section class="content">
+	    <form class="form-inline"  t:type="form"  role="form"  t:zone="formZone">
+			<div class="form-group">
+				<label class="control-label">${message:organization-name-label}<span class="mr5">${message:common-colon}</span></label>
+				<input  id="organizationName" class="tree-input iw120" type="text" placeholder="${message:organization-name-label}" />
+				<!-- <t:widgets.fcharacter type="space" count="4"/> -->
+				<button  id="orgSearchButton"  class="btn btn-info btn-flat ml10">${message:search-btn}</button >
+			</div> 		
+	 	</form>
+		<t:zone t:id="formZone" id="formZone">
+	       <ul id="tree" class="ztree"></ul>
+	    </t:zone>
+	    </section>
+</html>

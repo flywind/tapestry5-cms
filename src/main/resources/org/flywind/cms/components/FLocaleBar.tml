@@ -1,0 +1,8 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+ xmlns:p="tapestry:parameter">
+ <t:loop source="locales" value="locale">
+  <t:unless test="currentLocale">
+   <t:actionlink t:id="switch" context="locale">${localeName}</t:actionlink>
+  </t:unless>
+ </t:loop>
+</t:container>

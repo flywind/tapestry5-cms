@@ -1,0 +1,54 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:reset-password}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/UserList">${message:user-manage-label}</a>
+				</li>
+				<li>${message:reset-password}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="resetPwdForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<div class="form-group">
+				<label class="col-sm-3 control-label">${message:username-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control sm-w300" type="text" t:type="textfield" t:id="username" value="user.username" t:validate="required" readonly="readonly"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:password-send-type-label}<span class="cred">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<t:radiogroup t:id="sendPwd" value="sendPwd">
+						<t:label for="sendPwdEmail" style="margin-right:8px;"/>
+						<t:radio t:id="sendPwdEmail" value="1" label="${message:send-pwd-email-label}" checked="checked"/>
+						<t:label for="sendPwdPhone"  style="margin-right:8px; margin-left: 40px;"/>
+						<t:radio t:id="sendPwdPhone" value="2" label="${message:send-pwd-phone-label}"/>
+					</t:radiogroup>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-6">
+					<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+					<a t:type="pagelink" t:page="admin/sys/UserList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+				</div>
+			</div>
+				
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+</html>

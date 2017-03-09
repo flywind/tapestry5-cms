@@ -1,0 +1,56 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:update-init-password-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/UserList">${message:user-manage-label}</a>
+				</li>
+				<li>${message:update-init-password-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="updateInitPwdForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:username-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+					<div class="col-sm-6">
+						<input class="form-control" type="text" t:type="textfield" t:id="username" value="username" t:validate="required" readonly="readonly"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:new-password-lable}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+					<div class="col-sm-6">
+						<input class="form-control" type="text" t:type="passwordfield" t:id="newPassword" value="newPassword" t:validate="required"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:confirm-password-lable}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+					<div class="col-sm-6">
+						<input class="form-control" type="text" t:type="passwordfield" t:id="confirmPassword" value="confirmPassword" t:validate="required"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-6">
+						<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+						<a t:type="pagelink" t:page="admin/sys/UserList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+					</div>
+				</div>
+				
+				</div>
+			</form>
+			
+		</div>
+	</div>
+		
+</html>

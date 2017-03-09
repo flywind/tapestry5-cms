@@ -1,0 +1,88 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:version-log-create}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/VersionLogList">${message:version-log-list-title}</a>
+				</li>
+				<li>${message:version-log-create}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="editForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<t:if test="cn">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:log-title}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" placeholder="${message:log-title}"  t:type="textfield" t:id="title" value="log.title" t:validate="required"/>	
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:log-version}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" placeholder="${message:log-version}"  t:type="textfield" t:id="version" value="log.version"/>	
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:status}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" placeholder="${message:status}"  t:type="select" t:id="hide" t:model="0=${message:show-status},1=${message:hide-status}" value="log.hide" t:validate="required"/>	
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:log-content}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" placeholder="${message:log-content}"  t:type="textarea" t:id="content" value="log.content"/>	
+						</div>
+					</div>
+					<p:else>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:log-title}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" placeholder="${message:log-title}"  t:type="textfield" t:id="titleEn" value="log.titleEn" t:validate="required"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:log-version}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" placeholder="${message:log-version}"  t:type="textfield" t:id="versionEn" value="log.version"/>	
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:status}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" placeholder="${message:status}"  t:type="select" t:id="hideEn" t:model="0=${message:show-status},1=${message:hide-status}" value="log.hide" t:validate="required"/>	
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:log-content}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" placeholder="${message:log-content}"  t:type="textarea" t:id="contentEn" value="log.contentEn"/>	
+							</div>
+						</div>		
+					</p:else>
+				</t:if>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-6">
+						<button class="btn btn-info mar-pixe-r10">${message:submit-btn}</button>
+						<a t:type="pagelink" t:page="admin/sys/VersionLogList" class="btn btn-default">${message:cancel-btn}</a>	
+					</div>
+				</div>
+	
+				
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</html>

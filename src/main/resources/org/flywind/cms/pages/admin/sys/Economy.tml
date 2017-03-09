@@ -1,0 +1,288 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:setting-manage-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:setting-manage-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			<div class="panel-body">
+			<form class="form-horizontal" role="form" t:type="form" t:id="meForm"
+				autofocus="false">
+				<t:alerts showDismissAll="false" />
+				<t:if test="cn">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:systemMainTitle-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:systemMainTitle-label}" t:type="textfield"
+								t:id="systemMainTitle" value="systemSeting.systemMainTitle"
+								t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:companyName-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:companyName-label}" t:type="textfield"
+								t:id="companyName" value="systemSeting.companyName" t:validate="required" />
+						</div>
+					</div>
+					<p:else>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:systemMainTitleEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:systemMainTitleEn-label}" t:type="textfield"
+									t:id="systemMainTitleEn" value="systemSeting.systemMainTitleEn"
+									t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:companyNameEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:companyNameEn-label}" t:type="textfield"
+									t:id="companyNameEn" value="systemSeting.companyNameEn"
+									t:validate="required" />
+							</div>
+						</div>
+					</p:else>
+				</t:if>
+				
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:navToggle-label}</label>
+					<div class="col-sm-6">
+						<t:radiogroup t:id="navToggle" value="systemSeting.navToggle">
+							<t:radio t:id="true" value="true" label="${message:yes-label}" /><t:widgets.FCharacter count="1"/>
+							<t:label for="true" class="mar-pixe-r10" />
+							<t:radio t:id="false" value="false" label="${message:no-label}" /><t:widgets.FCharacter count="1"/>
+							<t:label for="false" class="mr10 ml50" />
+						</t:radiogroup>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:page-style-label}${message:common-colon}</label>
+					<div class="col-sm-6">
+						<t:if test="cn">
+							<select class="form-control" t:type="select" t:id="pageStyle"
+								t:model="pageStyles" value="systemSeting.style" t:validate="required"></select>
+							<p:else>
+								<select class="form-control" t:type="select"
+									t:id="pageStyleEn" t:model="pageStylesEn" value="systemSeting.style" t:validate="required"></select>
+							</p:else>
+						</t:if>
+
+					</div>
+				</div>
+				<!-- <div class="form-group">
+					<label class="col-sm-3 control-label">${message:boxedLayout-label}</label>
+					<div class="col-sm-6">
+						<t:radiogroup t:id="boxedLayout" value="systemSeting.boxedLayout">
+							<t:radio t:id="true2" value="true" label="${message:yes-label}" /><t:widgets.FCharacter count="1"/>
+							<t:label for="true2" class="mar-pixe-r10" />
+							<t:radio t:id="false2" value="false" label="${message:no-label}" /><t:widgets.FCharacter count="1"/>
+							<t:label for="false2" class="mr10 ml50" />
+						</t:radiogroup>
+					</div>
+				</div> -->
+				<div class="form-group">
+					<label class="col-sm-3 control-label">
+						${message:systemmaxLogoPath-label}
+						<span class="cred"></span>
+						${message:common-colon}
+					</label>
+					<div class="col-sm-3">
+						<div class="f-img mar-pixe-r10">
+							<t:zone t:id="uploadImgZone" id="uploadImgZone">
+								<t:if test="newLogo">
+									<img width="90" height="90" src="${newLogo}" />
+								</t:if>
+								<img width="90" height="90" src="${oldPic}" />
+							</t:zone>
+						</div>
+						<div class="f-upload pad-pixe-t25">
+							<t:widgets.fajaxUpload t:id="uploadImage"
+								t:multiple="false" t:allowedExtensions="[jpg, png, gif]"
+								t:sizeLimit="1M" />
+						</div>
+					</div>
+
+				</div>
+				<t:if test="cn">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:keyword-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control h50" type="text"
+								placeholder="${message:keyword-label}" t:type="textarea" t:id="keyword"
+								value="systemSeting.keyword" />
+						</div>
+					</div>
+					<p:else>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:keywordEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control h50" type="text"
+									placeholder="${message:keywordEn-label}" t:type="textarea"
+									t:id="keywordEn" value="systemSeting.keywordEn" />
+							</div>
+						</div>
+					</p:else>
+				</t:if>
+
+				<t:if test="cn">
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:address-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:address-label}" t:type="textfield" t:id="address"
+								value="systemSeting.address" t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:webUrl-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:webUrl-label}" t:type="textfield" t:id="webUrl"
+								value="systemSeting.webUrl" t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:email-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:email-label}" t:type="textfield" t:id="email"
+								value="systemSeting.email" t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:phone-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:phone-label}" t:type="textfield" t:id="phone"
+								value="systemSeting.phone" t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:customerFax-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:customerFax-label}" t:type="textfield"
+								t:id="customerFax" value="systemSeting.customerFax" t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:copyright-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:copyright-label}" t:type="textfield"
+								t:id="copyright" value="systemSeting.copyright" t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:icp-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:icp-label}" t:type="textfield" t:id="icp"
+								value="systemSeting.icp" t:validate="required" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:icplink-label}${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text"
+								placeholder="${message:icplink-label}" t:type="textfield" t:id="icplink"
+								value="systemSeting.icplink" t:validate="required" />
+						</div>
+					</div>
+
+					<p:else>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:addressEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:addressEn-label}" t:type="textfield"
+									t:id="addressEn" value="systemSeting.addressEn" t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:webUrlEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:webUrlEn-label}" t:type="textfield"
+									t:id="webUrlEn" value="systemSeting.webUrlEn" t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:emailEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:emailEn-label}" t:type="textfield" t:id="emailEn"
+									value="systemSeting.emailEn" t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:phoneEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:phoneEn-label}" t:type="textfield" t:id="phoneEn"
+									value="systemSeting.phoneEn" t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:customerFaxEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:customerFaxEn-label}" t:type="textfield"
+									t:id="customerFaxEn" value="systemSeting.customerFaxEn"
+									t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:copyrightEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:copyrightEn-label}" t:type="textfield"
+									t:id="copyrightEn" value="systemSeting.copyrightEn" t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:icpEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:icpEn-label}" t:type="textfield" t:id="icpEn"
+									value="systemSeting.icpEn" t:validate="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:icplinkEn-label}${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text"
+									placeholder="${message:icplinkEn-label}" t:type="textfield"
+									t:id="icplinkEn" value="systemSeting.icplinkEn" t:validate="required" />
+							</div>
+						</div>
+					</p:else>
+				</t:if>
+
+
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-6">
+						<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+
+</html>

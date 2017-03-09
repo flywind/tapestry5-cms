@@ -1,0 +1,101 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<!--ASIDE-->
+            <!--===================================================-->
+            <aside id="aside-container">
+                <div id="aside">
+                    <div class="nano">
+                        <div class="nano-content">
+                            
+                            <!--Nav tabs-->
+                            <!--================================-->
+                            <ul class="nav nav-tabs nav-justified">
+         
+                                <li class="active">
+                                    <a href="#asd-tab-setings" data-toggle="tab">
+                                        <i class="fa fa-cog"></i> Costomize
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--================================-->
+                            <!--End nav tabs-->
+
+
+
+                            <!-- Tabs Content -->
+                            <!--================================-->
+                            <div class="tab-content">
+
+                                <!--Third tab (Settings)-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade in active" id="asd-tab-setings">
+                                    <ul class="list-group bg-trans">
+                                        <li class="pad-top list-header">
+                                            <p class="text-semibold text-main mar-no">Layout</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="pull-right">
+                                                <input class="toggle-switch" id="demo-switch-1" type="checkbox" checked="checked"/>
+                                                <label for="demo-switch-1"></label>
+                                            </div>
+                                            <p class="mar-no">Boxed Layout</p>
+                                        </li>
+                                    </ul>
+
+
+                                
+
+                                    <ul class="list-group pad-btm bg-trans">
+                                        <li class="list-header"><p class="text-semibold text-main mar-no">Header / Navbar</p></li>
+                                        <li class="list-group-item">
+                                            <div class="pull-right">
+                                                <input class="toggle-switch" id="demo-switch-4" type="checkbox" checked="checked"/>
+                                                <label for="demo-switch-4"></label>
+                                            </div>
+                                            <p>Fixed Position</p>
+                                        </li>
+                                    </ul>
+                                    
+                                   <hr/>
+                                    <ul class="list-group pad-btm bg-trans">
+                                        <li class="list-header"><p class="text-semibold text-main mar-no">Footer</p></li>
+                                        <li class="list-group-item">
+                                            <div class="pull-right">
+                                                <input class="toggle-switch" id="demo-switch-4" type="checkbox" checked="checked"/>
+                                                <label for="demo-switch-4"></label>
+                                            </div>
+                                            <p>Fixed Position</p>
+                                        </li>
+                                    </ul>
+
+
+
+                                  
+
+                                    <p class="pad-hor text-semibold text-main mar-no">Task Progress</p>
+                                    <div class="pad-all">
+                                        <p>Upgrade Progress</p>
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar progress-bar-success" style="width: 15%;"><span class="sr-only">15%</span></div>
+                                        </div>
+                                        <small class="text-muted">15% Completed</small>
+                                    </div>
+                                    <div class="pad-hor">
+                                        <p>Database</p>
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar progress-bar-danger" style="width: 75%;"><span class="sr-only">75%</span></div>
+                                        </div>
+                                        <small class="text-muted">17/23 Database</small>
+                                    </div>
+
+                                </div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--Third tab (Settings)-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--===================================================-->
+            <!--END ASIDE-->
+</t:container>

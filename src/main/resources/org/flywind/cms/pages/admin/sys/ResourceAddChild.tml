@@ -1,0 +1,80 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:resourceAdd-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/ResourceList">${message:resource-manage-label}</a>
+				</li>
+				<li>${message:resourceAdd-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="ResourceForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<div class="form-group">
+				<label class="col-sm-3 control-label">${message:parent-node-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" value="${parent.name}" readonly="true"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:child-node-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:resource-name-label}"  t:type="textfield" t:id="name" value="resource.name" t:validate="required" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:resource-type-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<t:select class="form-control" t:id="type" t:model="menu=${message:resource-type-menu},button=${message:resource-type-button}" t:validate="required" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:resource-url-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:resource-url-label}"  t:type="textfield" t:id="url" value="resource.url" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:resource-pres-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:resource-pres-label}"  t:type="textfield" t:id="pres" value="resource.permission" t:validate="required"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:resource-icon-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:resource-icon-label}"  t:type="textfield" t:id="ioncCls" value="resource.ioncCls" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:resource-sequence-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:resource-sequence-label}"  t:type="textfield" t:id="seqNum" value="resource.seqNum" t:validate="min=-9999,max=9999" />
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-6">
+					<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+					<a t:type="pagelink" t:page="admin/sys/ResourceList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+				</div>
+			</div>
+				
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+</html>

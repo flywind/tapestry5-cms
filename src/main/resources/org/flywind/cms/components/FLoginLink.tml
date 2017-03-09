@@ -1,0 +1,10 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<t:security.notAuthenticated>
+		<t:actionlink t:id="tynamoLoginLink" class="${cls}" id="tynamoLoginLink"><i class="${loginCls}"></i> ${message:login}</t:actionlink>
+	</t:security.notAuthenticated>
+	
+	<t:security.authenticated>
+		<t:actionlink t:id="tynamoLogoutLink" class="${cls}" id="tynamoLogoutLink"><i class="${logoutCls}"></i> ${message:logout}</t:actionlink>
+	</t:security.authenticated>
+</html>

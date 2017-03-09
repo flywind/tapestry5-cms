@@ -1,0 +1,51 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:index-label}</span>
+            <!-- <ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Layouts</a></li>
+				<li>Collapsed Navigation</li>
+            </ol> -->
+        </h1>
+     </div>
+     <div id="page-content">
+			<div class="timeline two-column">
+					    <!-- Timeline header -->
+					    <div class="timeline-header">
+					        <div class="timeline-header-title bg-success">${message:index-log}</div>
+					    </div>
+						<t:loop source="versionLogs" value="versionLog">
+					    <div class="timeline-entry">
+					        <div class="timeline-stat">
+					            <div class="timeline-icon" style="font-size: 2em;">
+					                <i class="ion-speakerphone"></i>
+					            </div>
+					            <div class="timeline-time"><t:output t:format="yearFormat" value="versionLog.time"/></div>
+					        </div>
+					        <div class="timeline-label">
+					            <p class="mar-no pad-btm">
+					            	<t:if test="cn">
+					            		<a class="btn-link text-semibold" href="#">${userName}</a> ${versionLog.title}
+										<p:else>
+											<a class="btn-link text-semibold" href="#">${userName}</a> ${versionLog.titleEn}
+										</p:else>
+									</t:if>
+								 </p>
+					            <div class="img-holder">
+					                <t:if test="cn">
+										<t:OutputRaw value="versionLog.content"/>
+										<p:else>
+											<t:OutputRaw value="versionLog.contentEn"/>
+										</p:else>
+									</t:if>
+					            </div>
+					        </div>
+					    </div>
+					    </t:loop>
+					    <div class="clearfix"></div>
+					</div>
+     </div>
+	
+</html>

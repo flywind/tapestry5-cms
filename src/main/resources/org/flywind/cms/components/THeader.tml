@@ -1,0 +1,69 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<header id="navbar">
+		<div id="navbar-container" class="boxed">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">
+					<img src="${context:assets/tlayout/images/logo.png}" alt="Flywind Logo" class="brand-icon" />
+					<div class="brand-title">
+						<span class="brand-text">Tapestry cms</span>
+					</div>
+				</a>
+			</div>
+
+			<div class="navbar-content clearfix">
+				<ul class="nav navbar-top-links pull-left">
+
+					<li class="tgl-menu-btn">
+						<a class="mainnav-toggle" href="#">
+							<i class="ion-navicon-round"></i>
+						</a>
+					</li>
+
+				</ul>
+				
+				<ul class="nav navbar-top-links pull-right">
+					<li>
+						<t:pagelink t:page="Start">${message:site.menu.home}</t:pagelink>
+					</li>
+
+					<li>
+						<t:FLocaleBar/>
+					</li>
+
+					<li id="dropdown-user" class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+							<span class="pull-right">
+								<i class="ion-person ic-user"></i>
+							</span>
+							<div class="username hidden-xs">${user.username}</div>
+						</a>
+
+						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right panel-default">
+							<div class="panel-body text-center bg-primary">
+								<img alt="${user.username}" class="img-lg img-circle img-border mar-btm" src="${user.picUrl}"/>
+									<h4 class="mar-no text-light">
+										<t:security.notAuthenticated>
+						                ${message:hello-label}
+						                </t:security.notAuthenticated>
+						                <t:security.authenticated>
+						                ${message:hi-label}, ${user.username}.
+						                </t:security.authenticated>
+									</h4>								
+							</div>
+							<div class="list-group bg-trans">
+								<a class="list-group-item" t:type="pagelink" t:page="admin/sys/UserUpdate" t:context="${user.id}">${message:updateBaseInfo-label}</a>
+								<a class="list-group-item" t:type="pagelink" t:page="admin/sys/UpdateInitPwd" t:context="${user.id}">${message:updatePassword-label}</a>
+	
+							</div>
+							<div class="pad-all text-right">
+								<t:FLoginLink cls="btn btn-default btn-flat" loginCls="ion-log-in" logoutCls="ion-log-out"/>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+		</div>
+	</header>
+</t:container>

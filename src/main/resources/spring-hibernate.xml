@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:c="http://www.springframework.org/schema/c" xmlns:cache="http://www.springframework.org/schema/cache" xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p" xmlns:task="http://www.springframework.org/schema/task" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- 引入外部的db.properties文件 -->    
+    <context:property-placeholder location="classpath:db.properties"/>
+    
+    <!-- 小企业不需要独立的配置 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
+
+    <!-- 扫描指定目录下的bean，并且自动注入bean实例 -->
+    <context:component-scan base-package="org.flywind"/>
+ 
+    <!-- 开启AOP监听 只对当前配置文件有效 -->
+    <aop:aspectj-autoproxy/>
+    
+    <!-- 小企业不记录日志 -->
+    <!-- <bean class="org.flywind.cms.pages.admin.log.FLogAspect">
+    	<property name="prop">
+    		<props>
+    			<prop key="host">${mongodb.connection.host}</prop>
+    			<prop key="port">${mongodb.connection.port}</prop>
+    			<prop key="username">${mongodb.connection.username}</prop>
+    			<prop key="password">${mongodb.connection.password}</prop>
+    			<prop key="dbname">${mongodb.connection.dbname}</prop>
+    		</props>
+    	</property>
+    </bean> -->
+    
+    <!-- cacheManager, 指定ehcache.xml的位置 --> 
+	<bean id="cacheManagerEhcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+        	<value>classpath:ehcache.xml</value>
+        </property>
+        <!-- 由于hibernate也使用了Ehcache, 保证双方都使用同一个缓存管理器 -->
+        <property name="shared" value="true"/>
+    </bean>
+    
+    <!-- 配置数据源 -->
+	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<!-- 配置连接数据库的URL，用户名，密码 -->
+        <property name="url" value="${connection.url}"/>
+        <property name="username" value="${connection.username}"/>
+        <property name="password" value="${connection.password}"/>
+
+        <!-- 初始化连接池大小 -->
+        <property name="initialSize" value="${druid.initialSize}"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${druid.minIdle}"/>
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="${druid.maxActive}"/>
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${druid.maxWait}"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" />
+        <property name="validationQuery" value="${druid.validationQuery}" />
+        <property name="testWhileIdle" value="${druid.testWhileIdle}" />
+        <property name="testOnBorrow" value="${druid.testOnBorrow}" />
+        <property name="testOnReturn" value="${druid.testOnReturn}" />
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小  如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。-->
+        <property name="poolPreparedStatements" value="${druid.poolPreparedStatements}" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="${druid.maxPoolPreparedStatementPerConnectionSize}" />
+
+        <!-- 配置监控统计拦截的filters -->
+        <property name="filters" value="${druid.filters}" />
+	</bean>
+	
+	<!-- 配置session工厂bean -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	 <property name="dataSource" ref="dataSource" />	
+		<property name="hibernateProperties">
+			<props>
+				<!-- 修改实体类后是否自动更新对应的表，none：不自动更新，update：自动更新 -->
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<!-- SQL语句是否在日志中输出 -->
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<!-- 对SQL语句进行格式化 -->
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<!-- hibernate连接、操作数据库的方言，用于识别数据库。不同数据库的方言不同，方言实际就是一个类 -->
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<!-- 如果开启, Hibernate将在SQL中生成有助于调试的注释信息, 默认值为false. 取值 true|false -->
+				<prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+				<!-- 连接数据库超时设置 -->
+				<prop key="hibernate.autoReconnect">${hibernate.autoReconnect}</prop>
+				<!-- 用于控制线程中的session -->
+				<prop key="current_session_context_class">${hibernate.current_session_context_class}</prop>    
+				<!-- 开启查询缓存 -->
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<!-- 开启二级缓存 -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<!-- 高速缓存提供程序 --> 
+				<!-- 由于spring也使用了Ehcache, 保证双方都使用同一个缓存管理器 -->
+				<prop key="hibernate.cache.region.factory_class">
+				     org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
+			  </props>
+		</property>
+
+		<!-- 自动扫描注解为hibernate实体的类 -->
+		<property name="packagesToScan">
+			<list>
+				<value>org.flywind.business.entities</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 配置事物管理 -->
+	<bean name="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- 拦截器方式配置事物 -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="saveOrUpdate*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="grant*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="init*" propagation="REQUIRED" />
+			<tx:method name="mov*" propagation="REQUIRED" />
+
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<!-- 第一个*代表所有的返回值类型；第二个*代表所有的类；第三个*代表类所有方法；..代表子或者孙子包；最后一个..代表所有的参数 -->
+		<aop:pointcut id="transactionPointcut" expression="execution(* org.flywind.business..services..*Impl.*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
+	</aop:config>
+	
+	<!-- spring线程池 -->
+  	<bean id ="taskExecutor"  class ="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" > 
+    	<property name ="corePoolSize" value ="2" /> <!-- 线程池维护线程的最少数量 -->
+    	<property name ="keepAliveSeconds" value ="300" /> <!-- 线程池维护线程所允许的空闲时间 -->   
+    	<property name ="maxPoolSize" value ="1000" />  <!-- 线程池维护线程的最大数量 -->
+    	<property name ="queueCapacity" value ="200" /> <!-- 线程池所使用的缓冲队列 -->  
+  	</bean>
+
+</beans>

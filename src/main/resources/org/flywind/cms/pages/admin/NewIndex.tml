@@ -1,0 +1,51 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<section class="content-header">
+		<h1>
+			${message:index-label}
+		</h1>
+	</section>
+	<section class="content bgray animated flipInY">
+      
+      <t:loop source="versionLogs" value="versionLog">
+      <div class="row mb10">
+        <div class="col-md-12">
+          <ul class="timeline">
+            <li class="time-label">
+                  <span class="bg-red">
+                    <t:output t:format="yearFormat" value="versionLog.time"/>
+                  </span>
+            </li>
+            <li>
+              <i class="fa fa-envelope bg-blue"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> <t:output t:format="timeFormat" value="versionLog.time"/></span>
+				<t:if test="cn">
+					<h3 class="timeline-header">${versionLog.title}</h3>
+					<p:else>
+						<h3 class="timeline-header">${versionLog.titleEn}</h3>
+					</p:else>
+				</t:if>
+
+                <div class="timeline-body">
+                	<t:if test="cn">
+						<t:OutputRaw value="versionLog.content"/>
+						<p:else>
+							<t:OutputRaw value="versionLog.contentEn"/>
+						</p:else>
+					</t:if>
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="fa fa-clock-o bg-gray"></i>
+            </li>
+          </ul>
+        </div>
+        <!-- /.col -->
+      </div>
+      </t:loop>
+  
+	</section>
+</html>

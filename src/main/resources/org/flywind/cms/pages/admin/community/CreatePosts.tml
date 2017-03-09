@@ -1,0 +1,55 @@
+<html t:type="Layout" t:title="${message:create-posts}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+<div class="panel content">
+    <div class="panel-heading">
+        <div class="panel-control">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#;" t:type="pagelink" t:page="admin/community/CreatePosts">${message:create-posts}</a></li>
+                <li><a href="#;" t:type="pagelink" t:page="admin/community/PostsList">${message:management-posts}</a></li>
+                <li><a href="#;" t:type="pagelink" t:page="admin/community/Settings">${message:settings-label}</a></li>
+                <li><a href="#;" t:type="pagelink" t:page="admin/community/UpdatePwd">${message:account-label}</a></li>
+            </ul>
+        </div>
+        <h3 class="panel-title">${message:my-home}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade active in">
+                <form class="form-horizontal clearfix" role="form" t:type="form" t:id="meForm" autofocus="false">
+		
+    				<t:alerts showDismissAll="false"/>
+					<div class="form-group">
+						<label class="col-sm-1 control-label">${message:title-label}${message:common-colon}<span class="text-danger">${message:common-all}</span></label>
+						<div class="col-sm-11">
+							<input class="form-control" t:type="textfield"  t:id="title" value="posts.title" t:validate="required,maxLength=150,minLength=5"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label">${message:categoryId-label}${message:common-colon}<span class="text-danger">${message:common-all}</span></label>
+						<div class="col-sm-11">
+							<select class="form-control" t:type="select" t:id="categoryId"  value="posts.categoryId" t:model="categorys" t:blankOption="ALWAYS" t:validate="required"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label">${message:tagId-label}${message:common-colon}<span class="text-danger">${message:common-all}</span></label>
+						<div class="col-sm-11">
+							<select class="form-control" t:type="select" t:id="tagId"  value="posts.tagId" t:model="tags" t:blankOption="ALWAYS" t:validate="required"/>
+						</div>
+					</div>
+					<div class="form-group auto-height" style="min-height:388px;">
+						<label class="col-sm-1 control-label">${message:content-label}${message:common-colon}</label>
+						<div class="col-sm-11">
+							<input class="form-control" t:validate="required" style="height:300px;border:none;display:none;" type="text"  t:type="textarea" t:id="content" value="posts.content" t:mixins="widgets/FSummernote" FSummernote.tools="full" FSummernote.uploadToServer="true" FSummernote.url="/tapestry5-cms/rest/file/upload" t:language="${lang}"/>
+						</div>
+					</div>
+					<div class="form-group col-sm-offset-1 text-center">
+                	<input id="demo-state-btn" class="btn btn-lg btn-info" value="${message:submit-btn}" type="submit"/>   
+            		</div>
+            
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

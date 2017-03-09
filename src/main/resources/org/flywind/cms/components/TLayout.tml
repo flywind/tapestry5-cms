@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <title>${title}</title>
+
+	<!-- HTML loading -->
+    <link href="${context:assets/tlayout/js/pace/pace.min.css}" rel="stylesheet"/>
+    <script src="${context:assets/tlayout/js/pace/pace.min.js}"/>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?57c3d3fa2a072843314c21baa927ae24";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+
+<body>
+	<div class="my-error nosupport">
+		<div class="error-left-icon"></div>
+		<div class="error-right-icon act-show">
+			<h2>${message:nosupport.error1}</h2>
+			<div class="error-right-top">${message:nosupport.error2}</div>
+			<div>
+				<ul>
+					<li>${message:nosupport.error3}</li>
+					<li>${message:nosupport.error4}</li>
+					<li>${message:nosupport.error5}</li>
+					<li>${message:nosupport.error6}</li>
+				</ul>
+			</div>	
+		</div>
+		<div class="clear"></div>
+	</div>
+    <div id="container" class="aside-float aside-bright ${navCss} navbar-fixed footer-fixed aside-fixed mainnav-fixed ${boxedlayoutCss}">
+        <t:THeader/>
+
+        <div class="boxed">
+
+            <div id="content-container">
+                <t:body/>
+            </div>
+            
+			<t:TNav/>
+
+        </div>
+
+        <t:TFooter/>
+
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+
+    </div>
+    
+    
+    
+    <div style="display:none">
+	   <form t:type="form">
+	       <input t:type="hidden" id="web_contextPath" value="contextPath"/>
+	       <input t:type="hidden" id="web_pageName" value="pageName"/>
+	   </form>
+	</div>
+</body>
+</html>

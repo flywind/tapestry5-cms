@@ -1,0 +1,79 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:operation-log-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:operation-log-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<t:zone t:id="opLogListZone" id="opLogListZone">
+					<div id="search-tab-1" class="tab-pane fade active in">
+						
+						<t:alerts showDismissAll="false"/>
+						<form class="form-inline" t:type="form" role="form" t:zone="opLogListZone" t:id="searchForm" t:autofocus="false">
+							<div class="form-group mar-rgt">
+								<input class="form-control" placeholder="${message:username-label}" type="text" t:type="textfield" t:id="username" value="opLog.username"/>
+							</div>
+							<div class="form-group mar-rgt">
+								<input class="form-control" type="text" placeholder="${message:name-label}" t:type="textfield" t:id="name" value="opLog.name"/>
+							</div>
+							<div class="form-group mar-rgt">
+								<select t:type="select" t:id="type" t:model="selectOpType"></select>
+							</div>
+							<div class="form-group mar-rgt">
+								<select t:type="select" t:id="result" t:model="selectOpResult"></select>
+							</div>
+							<div class="form-group mar-rgt">
+								<input class="form-control mar-rgt input-time" type="text" placeholder="${message:opTime-label}" t:type="textfield" t:id="startTime" value="startTime" readonly="readonly" 
+									t:mixins="widgets/FDatetimepicker" FDatetimepicker.params="${options}"/>
+								<input class="form-control input-time" type="text" placeholder="${message:to-label}" t:type="textfield" t:id="endTime" value="endTime" readonly="readonly" 
+									t:mixins="widgets/FDatetimepicker" FDatetimepicker.params="${options}"/>
+							</div>
+							<button class="btn btn-primary mar-rgt" type="submit"><i class="fa fa-search mar-pixe-r5"></i> ${message:search-btn}</button>
+				            <a t:type="eventLink" t:event="reset" class="btn btn-default" t:zone="opLogListZone"><i class="fa fa-eraser"></i> ${message:reset-btn}</a>
+						</form>
+					</div>
+					<button class="btn btn-sm btn-danger btn-flat toolbarBtn" disabled="disabled" data-button-type="bootstrap" id="delete"><i class="fa fa-trash-o mar-pixe-r5"></i>${message:del-btn}</button>
+					<t:widgets.FBootstrapTable t:id="opLogListId" t:source="opLogs" t:language="${lang}" t:columns="[{field:'state',radio:'true'},
+					{field:'username',title:'${message:username-label}'},
+					{field:'name',title:'${message:name-label}'},
+					{field:'info', title:'${message:info-label}'},
+					{field:'type', title:'${message:type-label}',formatter:'getType'},
+					{field:'result', title:'${message:result-label}',formatter:'getResult'},
+					{field:'opTime',title:'${message:opTime-label}'}]" t:params="{'pagination':'true','showRefresh':'true','toolbar':'.toolbarBtn',
+																									'showToggle':'true','showColumns':'true'}"/>	
+					</t:zone>
+				</div>
+			</div>
+	</div>
+	
+	
+	
+	<script>
+		function getType(value,row) {
+		 	if (row.type == 1) {
+		 		return '${message:operation-type-create-log}';
+		 	} else if (row.type == 2) {
+		 		return '${message:operation-type-delete-log}';
+		 	} else if (row.type == 3) {
+		 		return '${message:operation-type-update-log}';
+		 	}
+		 	return '${message:operation-type-select-log}';
+		}
+		 
+		function getResult(value,row) {
+		 	if (row.result == 1) {
+		 		return '${message:operation-result-success-log}';
+		 	}
+			return '${message:operation-result-fail-log}';
+		}
+	</script>
+</html>

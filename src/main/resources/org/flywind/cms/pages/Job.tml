@@ -1,0 +1,38 @@
+<html t:type="Layout" t:title="${message:site.menu.job}"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+	<div class="row content">
+		<div class="col-sm-8">
+			<div class="wrapper wrapper-content animated fadeInRight">
+				<t:zone t:id="dataZone" id="dataZone">
+				<t:loop source="postss" value="posts">
+				<div class="faq-item">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a href="#;" target="_blank" class="faq-question" t:type="pagelink" t:page="PostsDetial" t:context="${posts.id}" title="${posts.title}">${posts.title}</a>
+                            <small><strong class="mar-pixe-r10">${posts.author}</strong> <i class="fa fa-clock-o"></i> ${posts.timeAgo} - <t:output format="dFormat" value="posts.lastUpdateTime"/></small>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="tag-list" style="padding: 0">
+		                        <li><a href="#;" t:type="eventlink" t:event="go" t:context="${posts.tagId}"><i class="fa fa-tag"></i> ${posts.tagName}</a></li>
+		                    </ul>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <div> <i class="ion-reply"> </i> ${posts.countDiscuss} ${message:discuss-label}</div>
+                             <i class="fa fa-eye"> </i> ${posts.clicks} ${message:views-label}
+                        </div>
+                    </div>
+                </div>
+                </t:loop>
+				</t:zone>
+				<style>.pa{padding-top: 25px;}</style>
+				<div class="pa">
+				<t:widgets.fpaginate t:source="postss" t:id="plist" t:zone="dataZone" t:pagesize="10"/>
+				</div>
+ 				
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<t:Side />
+		</div>
+	</div>
+</html>

@@ -1,0 +1,17 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+ xmlns:p="tapestry:parameter">
+ <ul class="nav navbar-top-links pull-right mar-rgt f-menu">
+	<li>
+		<a href="#;" t:type="FLink" t:page="Start" value="${message:site.menu.home}"/>
+	</li>
+	<li>
+		<a href="#;" t:type="FLink" t:page="Share" value="${message:site.menu.share}"/>
+	</li>
+	<li>
+		<a href="#;" t:type="FLink" t:page="Qa" value="${message:site.menu.QA}"/>
+	</li>
+	<li>
+		<a href="#;" t:type="FLink" t:page="Job" value="${message:site.menu.job}"/>
+	</li>
+</ul>
+</t:container>

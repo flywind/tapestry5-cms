@@ -1,0 +1,86 @@
+.signup-bg {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0
+}
+
+.signup-loading {
+	display: inline-block;
+	overflow: hidden;
+	line-height: 43px;
+	white-space: nowrap;
+	max-width: 0;
+	-webkit-transition: max-width .5s;
+	transition: max-width .5s
+}
+
+.disabled>.signup-loading {
+	max-width: 10em;
+	-webkit-transition: max-width .5s;
+	transition: max-width .5s
+}
+
+.signup-loading .fa {
+	animation: none
+}
+
+.disabled>.signup-loading .fa {
+	-webkit-animation: fa-spin 2s infinite linear;
+	animation: fa-spin 2s infinite linear
+}
+
+@media ( min-width : 768px) {
+	.signup-bg {
+		display: block
+	}
+	#signup-bg-list {
+		display: inline-block;
+		padding: 5px;
+		background-color: #fff
+	}
+	.signup-bg img {
+		vertical-align: top;
+		width: 64px;
+		cursor: pointer;
+		-webkit-transition: opacity .5s;
+		transition: opacity .5s
+	}
+	.disabled .signup-chg-bg, .signup-bg .active {
+		opacity: .3;
+		cursor: default;
+		-webkit-transition: opacity .5s;
+		transition: opacity .5s
+	}
+	.bg-white {
+		background-color: #fff;
+	}
+	.cur-img {
+		background: url("../images/bg-img/bg-img-1.jpg");
+	}
+}
+
+.alert-sign {
+	margin-bottom: 0;
+	padding: 7px 0;
+}
+
+i.form-control-feedback {
+	line-height: 30px;
+}
+.cls-container a.blue-link
+{
+	color:#38a0f4;
+}
+.cls-container a.blue-link:hover{
+	color:#1690f3;
+}
+.pR{
+	position: relative;
+}
+.lang-position{
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}

@@ -1,0 +1,61 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<!--
+    Subdirectories can be specified below the property e.g. java.io.tmpdir/one
+    -->
+    <!-- <diskStore path="java.io.tmpdir"/> -->
+	<!-- <diskStore path="F:\\ehcache"/> -->
+    <!--
+    Mandatory Default Cache configuration. These settings will be applied to caches
+    created programmtically using CacheManager.add(String cacheName)
+    -->
+    
+    <diskStore path="java.io.tmpdir/ehcache_data"/>
+    
+    <defaultCache
+	     maxElementsInMemory="20000"
+	     eternal="false"
+	     timeToIdleSeconds="86400"
+	     timeToLiveSeconds="2600000"
+	     overflowToDisk="true"
+	     maxElementsOnDisk="10000000"
+	     diskPersistent="false"
+	     diskExpiryThreadIntervalSeconds="120"
+	     memoryStoreEvictionPolicy="LRU"
+     />
+    
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+		   maxElementsInMemory="5000" 
+	       eternal="true" 
+	       overflowToDisk="true" />
+	<cache name="org.hibernate.cache.internal.StandardQueryCache"
+	       maxElementsInMemory="20000" 
+	       eternal="false" 
+	       timeToLiveSeconds="2600000"
+	       overflowToDisk="true" />	
+	
+	<!--
+	java文件注解查找cache方法名的策略：如果不指定java文件注解中的region="ehcache.xml中的name的属性值", 
+	则使用name名为org.flywind.bean.user.User的cache(即类的全路径名称), 如果不存在与类名匹配的cache名称, 则用 defaultCache
+	如果User包含set集合, 则需要另行指定其cache
+	例如User包含citySet集合, 则也需要
+	添加配置到ehcache.xml中
+	
+	 配置自定义缓存
+        maxElementsInMemory：缓存中允许创建的最大对象数
+        eternal：缓存中对象是否为永久的，如果是，超时设置将被忽略，对象从不过期。
+        timeToIdleSeconds：缓存数据的钝化时间，也就是在一个元素消亡之前，
+                    两次访问时间的最大时间间隔值，这只能在元素不是永久驻留时有效，
+                    如果该值是 0 就意味着元素可以停顿无穷长的时间。
+        timeToLiveSeconds：缓存数据的生存时间，也就是一个元素从构建到消亡的最大时间间隔值，
+                    这只能在元素不是永久驻留时有效，如果该值是0就意味着元素可以停顿无穷长的时间。
+        overflowToDisk：内存不足时，是否启用磁盘缓存。
+        memoryStoreEvictionPolicy：缓存满了之后的淘汰算法。
+	-->    
+    <cache name="javaClassName" 
+    	   maxElementsInMemory="20000" 
+    	   eternal="false" 
+	       timeToIdleSeconds="86400" 
+	       timeToLiveSeconds="2600000"
+	       overflowToDisk="true" />  
+	    
+</ehcache>

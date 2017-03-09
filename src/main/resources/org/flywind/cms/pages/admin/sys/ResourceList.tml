@@ -1,0 +1,93 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:resource-manage-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:resource-manage-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<table id="tableTree" class="table-hover table-bordered table-striped" style="display:none;">
+	    <thead>
+	        <tr>
+	            <th>${message:resource-name-label}</th>
+	            <th>${message:resource-type-label}</th>
+	            <th>${message:resource-url-label}</th>
+	            <th>${message:resource-permission-label}</th>
+	            <th>${message:resource-action-label}</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <t:loop source="resources" value="resource">
+	        		<t:if test="resource.rootNode">
+	        		<tr data-tt-id="${resource.id}">
+		                <td>
+		                <t:if test="cn">
+			                ${resource.name}
+			                <p:else>
+			                ${resource.nameEn}
+			                </p:else>
+		                </t:if>
+		                </td>
+		                <td>${menuType}</td>
+		                <td>${resource.url}</td>
+		                <td>${resource.permission}</td>
+		                <td>
+		                	<t:security.hasPermission t:permission="resource:add">
+		                	<t:if test="addNode">
+		                        <a href="#;" class="mar-pixe-r10" t:type="pagelink" t:page="admin/sys/ResourceAddChild" t:context="${resource.id}">${message:add-child-btn}</a>
+		                    </t:if>
+		                    </t:security.hasPermission>
+		                    <t:security.hasPermission t:permission="resource:edit">
+		                        <a class="mar-pixe-r10" t:type="pagelink" t:page="admin/sys/ResourceEditChild" t:context="${resource.id}">${message:edit-btn}</a>   
+		                    </t:security.hasPermission>          
+		                </td>
+		            </tr>
+	        		<p:else>
+	        		<tr data-tt-id="${resource.id}" data-tt-parent-id="${resource.parentId}"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     >
+		                <td>
+		                <t:if test="cn">
+			                ${resource.name}
+			                <p:else>
+			                ${resource.nameEn}
+			                </p:else>
+		                </t:if>
+		                </td>
+		                <td>${menuType}</td>
+		                <td>${resource.url}</td>
+		                <td>${resource.permission}</td>
+		                <td>
+		                	<t:security.hasPermission t:permission="resource:add">
+		                    <t:if test="addNode">
+		                        <a href="#;" class="mar-pixe-r10" t:type="pagelink" t:page="admin/sys/ResourceAddChild" t:context="${resource.id}">${message:add-child-btn}</a>
+		                    </t:if>
+		                    </t:security.hasPermission>
+		                    <t:security.hasPermission t:permission="resource:edit">
+	                        <a class="mar-pixe-r10" t:type="pagelink" t:page="admin/sys/ResourceEditChild" t:context="${resource.id}">${message:edit-btn}</a>
+	                        </t:security.hasPermission>
+	                        <t:security.hasPermission t:permission="resource:delete">
+	                        <a class="mar-pixe-r10" t:type="eventlink" t:event="del" t:context="${resource.id}">${message:del-btn}</a>
+	                        </t:security.hasPermission>	                   
+		                </td>
+		            </tr>
+	        		</p:else>
+	        		</t:if>
+	            	
+	            
+	            
+	        </t:loop>
+	    </tbody>
+	</table>
+				</div>
+			</div>
+	</div>
+	
+
+</html>

@@ -1,0 +1,63 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:link-manage-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:link-manage-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<t:zone t:id="linkListZone" id="linkListZone">
+					<div id="search-tab-1" class="tab-pane fade active in">
+						
+						<t:alerts showDismissAll="false"/>
+						<form class="form-inline" t:type="form" role="form" t:zone="linkListZone" t:id="searchForm" t:autofocus="false">
+							<div class="form-group mar-rgt">
+								<input class=" form-control" type="text" placeholder="${message:linkName-label}" t:type="textfield" t:id="linkName" value="link.linkName"/>
+							</div>
+							<button class="btn btn-primary mar-rgt" type="submit"><i class="fa fa-search mar-pixe-r5"></i> ${message:search-btn}</button>
+				            <a t:type="eventLink" t:event="reset" class="btn btn-default" t:zone="linkListZone"><i class="fa fa-eraser"></i> ${message:reset-btn}</a>
+						</form>
+					</div>
+					<t:security.hasPermission t:permission="friendlink:add">
+			           <a t:type="pagelink" t:page="admin/sys/FriendLinkCreate" class="btn btn-success mar-pixe-r10 toolbarBtn"><i class="fa fa-plus mar-pixe-r5"></i>${message:add-btn} </a>
+			         </t:security.hasPermission>
+			         <t:security.hasPermission t:permission="friendlink:edit">
+			           <t:widgets.FBootstrapTableBtn t:id="edit" cls="btn btn-info mar-pixe-r10 toolbarBtn" itemCls="fa fa-pencil mar-pixe-r5" linkType="page" 
+							text="${message:edit-btn}" url="FriendLinkEdit" gridId="friendLinkGrid" />
+			         </t:security.hasPermission>
+			         <t:security.hasPermission t:permission="friendlink:delete">
+			           <t:widgets.FBootstrapTableBtn t:id="delete" zone="linkListZone" cls="btn btn-danger mar-pixe-r10 toolbarBtn" itemCls="fa fa-trash-o mar-pixe-r5" 
+							text="${message:del-btn}" url="${delUrl}" gridId="friendLinkGrid"/>
+			         </t:security.hasPermission>
+					<t:widgets.FBootstrapTable t:id="friendLinkGrid" t:source="links" t:language="${lang}" t:columns="[{'field':'state','checkbox':'true'},
+					{field:'linkName',title:'${message:linkName-label}'},
+					{field:'linkUrl',title:'${message:linkUrl-label}'},
+					{field:'linkLogo', title:'${message:linkLogo-label}'},
+					{field:'open', title:'${message:isOpen-label}'},
+					{field:'lastUpdateTime',title:'${message:lastUpdateTime-label}'}]" t:params="{'pagination':'true','showRefresh':'true','toolbar':'.toolbarBtn',
+																									'showToggle':'true','showColumns':'true'}"/>	
+					</t:zone>
+				</div>
+			</div>
+	</div>
+	
+	
+	
+	<script>
+	function open(index,row){
+		if(row.isOpen == true){
+			return '<small class="label label-success">${message:display-true}</small>';
+		}else if(row.isOpen == false){
+			return '<small class="label label-default">${message:display-false}</small>';
+		}
+	}
+	</script>
+</html>

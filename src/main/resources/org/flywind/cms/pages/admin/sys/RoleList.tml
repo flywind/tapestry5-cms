@@ -1,0 +1,62 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:role-manage-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:role-manage-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<t:zone t:id="listZone" id="listZone">
+					<div id="search-tab-1" class="tab-pane fade active in">
+						
+						<t:alerts showDismissAll="false"/>
+						<form class="form-inline" t:type="form" t:zone="listZone" t:autofocus="false" t:id="searchForm">
+							<div class="form-group mar-rgt">
+								<input class="form-control" type="text" placeholder="${message:role-name-label}" t:type="textfield" t:id="name" value="role.name"/>
+							</div>
+							<div class="form-group mar-rgt">
+								<input class="form-control" type="text" placeholder="${message:description-label}" t:type="textfield" t:id="description" value="role.description"/>
+							</div>
+							<button class="btn btn-primary mar-rgt" type="submit"><i class="fa fa-search mar-pixe-r5"></i> ${message:search-btn}</button>
+				            <a t:type="eventLink" t:event="reset" class="btn btn-default" t:zone="listZone"><i class="fa fa-eraser"></i> ${message:reset-btn}</a>
+
+				        </form>
+					</div>
+					<t:security.hasPermission t:permission="role:add">
+								
+				           <a t:type="pagelink" t:page="admin/sys/RoleCreate" class="btn btn-sm btn-success mar-pixe-r10 toolbarBtn"><i class="fa fa-plus mar-pixe-r5"></i>${message:add-btn} </a>
+				        
+			         </t:security.hasPermission>
+			         	<t:security.hasPermission t:permission="role:edit">
+				         
+				           <t:widgets.FBootstrapTableBtn t:id="edit" cls="btn btn-sm btn-info mar-pixe-r10 toolbarBtn" itemCls="fa fa-pencil mar-pixe-r5" linkType="page" 
+								text="${message:edit-btn}" url="RoleEdit" gridId="gridData" />
+				         
+			         	</t:security.hasPermission>
+			         	<t:security.hasPermission t:permission="role:delete">
+				         
+				           <t:widgets.FBootstrapTableBtn t:id="delete" zone="listZone" cls="btn btn-sm btn-danger mar-pixe-r10 toolbarBtn" itemCls="fa fa-trash-o mar-pixe-r5" 
+								text="${message:del-btn}" url="${delUrl}" gridId="gridData"/>
+				         
+				     </t:security.hasPermission>
+					<t:widgets.FBootstrapTable t:id="gridData" t:source="roles" t:language="${lang}" t:columns="[{'field':'state','checkbox':'true'},
+					{field:'name',title:'${message:name-label}'},
+					{field:'description',title:'${message:description-label}'},
+					{field:'lastUpdatePerson', title:'${message:lastUpdatePerson-label}'},
+					{field:'lastUpdateTime',title:'${message:lastUpdateTime-label}'}]" t:params="{'pagination':'true','showRefresh':'true','toolbar':'.toolbarBtn',
+																									'showToggle':'true','showColumns':'true'}"/>	
+					</t:zone>
+				</div>
+			</div>
+	</div>
+	
+	
+</html>

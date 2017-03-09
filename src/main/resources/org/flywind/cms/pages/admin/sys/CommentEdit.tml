@@ -1,0 +1,63 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:comment-edit-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/CommentList">${message:manage-label}</a>
+				</li>
+				<li>${message:comment-edit-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="meForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<div class="form-group">
+				<label class="col-sm-3 control-label">${message:name-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:name-label}"  t:type="textfield" t:id="name" value="item.name" t:validate="required"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:content-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" style="height:80px" type="text" t:type="textarea" t:id="content" value="item.content" t:validate="required"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:reply-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+						<input class="form-control" style="height:80px" type="text" t:type="textarea" t:id="reply" value="item.reply"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:isOpen-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+						<select class="form-control b-white" type="text" t:type="select" t:id="isOpen" value="item.isOpen" t:model="literal:false=${message:not-show-msg},true=${message:show-msg}" t:validate="required"/>
+				</div>
+			</div>
+			
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-6">
+						<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+						<a t:type="pagelink" t:page="admin/sys/CommentList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+					</div>
+				</div>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+</html>

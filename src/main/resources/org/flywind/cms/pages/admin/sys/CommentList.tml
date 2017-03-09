@@ -1,0 +1,59 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:manage-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:manage-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<t:zone t:id="itemListZone" id="itemListZone">
+					<div id="search-tab-1" class="tab-pane fade active in">
+						
+						<t:alerts showDismissAll="false"/>
+						<form class="form-inline" t:type="form" role="form" t:zone="itemListZone" t:id="searchForm" t:autofocus="false">
+							<div class="form-group mar-rgt">
+								<input class="form-control" type="text" placeholder="${message:name-label}" t:type="textfield" t:id="name" value="item.name"/>
+							</div>
+							<button class="btn btn-primary mar-rgt" type="submit"><i class="fa fa-search mar-pixe-r5"></i> ${message:search-btn}</button>
+				            <a t:type="eventLink" t:event="reset" class="btn btn-default" t:zone="itemListZone"><i class="fa fa-eraser"></i> ${message:reset-btn}</a>
+						</form>
+					</div>
+					<t:security.hasPermission t:permission="comment:edit">
+							<t:widgets.FBootstrapTableBtn t:id="edit" cls="btn btn-info mar-pixe-r10 toolbarBtn" itemCls="fa fa-pencil mar-pixe-r5" linkType="page" 
+									text="${message:edit-btn}" url="CommentEdit" gridId="itemGrid" />
+	         		</t:security.hasPermission>
+			        <t:security.hasPermission t:permission="comment:delete">
+						<t:widgets.FBootstrapTableBtn t:id="delete" zone="itemListZone" cls="btn btn-danger mar-pixe-r10 toolbarBtn" itemCls="fa fa-trash-o mar-pixe-r5" 
+							text="${message:del-btn}" url="${delUrl}" gridId="itemGrid"/>
+			        </t:security.hasPermission>
+					<t:widgets.FBootstrapTable t:id="itemGrid" t:source="items" t:language="${lang}" t:columns="[{'field':'state','checkbox':'true'},
+					{field:'name',title:'${message:name-label}'},
+					{field:'contentId', title:'${message:content-id}'},
+					{field:'content', title:'${message:content-label}'},
+					{field:'reply', title:'${message:reply-label}'},
+					{field:'isOpen', title:'${message:isOpen-label}'},
+					{field:'createTime',title:'${message:createTime-label}'}]" t:params="{'pagination':'true','showRefresh':'true','toolbar':'.toolbarBtn',
+																									'showToggle':'true','showColumns':'true'}"/>	
+					</t:zone>
+				</div>
+			</div>
+	</div>
+	
+	<script>
+	function open(index,row){
+		if(row.isOpen == true){
+			return '<small class="label label-success">${message:display-true}</small>';
+		}else if(row.isOpen == false){
+			return '<small class="label label-default">${message:display-false}</small>';
+		}
+	}
+	</script>
+</html>

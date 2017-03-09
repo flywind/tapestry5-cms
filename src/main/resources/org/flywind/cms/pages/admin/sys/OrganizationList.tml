@@ -1,0 +1,193 @@
+<html t:type="TLayout"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<style>
+		.dis-none{display:none;}
+	</style>
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:organization-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:organization-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<div class="col-sm-6">
+					 <form class="form-inline"  t:type="form"  role="form"  t:zone="formZone">
+						
+							<div class="form-group mar-rgt">
+								<input  id="organizationName" placeholder="${message:organizationName-label}" class="form-control" type="text"/>
+							</div>
+							<div class="form-group mar-rgt">
+								<button  id="orgSearchButton"  class="btn btn-info btn-flat"><i class="fa fa-search mar-pixe-r5"></i>${message:search-btn}</button>
+							</div>
+							<div id="showBtnDiv" class="form-group mar-rgt">
+								<span class="btn btn-block btn-default btn-flat" id="showBtn"><i class="fa fa-minus-square-o mar-pixe-r5"></i>${message:show-btn}</span>
+							</div>
+							<div id="retractBtnDiv" class="form-group mar-rgt">
+								<span class="btn btn-block btn-default btn-flat" id="retractBtn"><i class="fa fa-plus-square-o mar-pixe-r5"></i>${message:retract-btn}</span>
+							</div>
+								
+				 	</form>
+					<t:zone t:id="formZone" id="formZone">
+					<div id="orgTreeDiv" class="b1sgray orgTreeDiv">
+				       <ul id="tree" class="ztree"></ul>
+				    </div>
+				    </t:zone>
+				</div>
+				
+					<div class="col-sm-6">
+						<t:alerts showDismissAll="false"/>
+						<div class="pt55 minw400">
+							<div class="pl125">
+								<div class="form-group">
+						
+							           	<button id="addChildBtn" class="btn btn-sm btn-success btn-flat mar-pixe-r10" disabled="disabled">
+							           		<i class="fa fa-plus mar-pixe-r5"></i>${message:addChildBtn-label}</button>
+
+										<button id="editBtn" class="btn btn-sm btn-info btn-flat mar-pixe-r10" disabled="disabled">
+											<i class="fa fa-pencil mar-pixe-r5"></i>${message:edit-btn}</button>
+
+										<button id="delBtn" class="btn btn-sm btn-danger btn-flat mar-pixe-r10" disabled="disabled">
+											<i class="fa fa-trash-o mar-pixe-r5"></i>${message:del-btn}</button>
+								</div>
+							</div>
+							
+							<!-- 添加下级机构的FORM -->
+							<t:form class="form-horizontal form-group dis-none" t:id="createChildForm" t:zone="formZone">
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:pname-label}${message:common-colon}</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="pname" value="organization.parentName" readonly="readonly"/>
+										<t:hidden t:id="pId" id="pId" value="organization.parentId"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:name-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="name" value="organization.name" t:validate="required" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:contactName-label}${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="contactName" value="organization.contactName"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:contactNumber-label}${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="contactNumber" value="organization.contactNumber"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:address-label}${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="address" value="organization.address"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-6">
+									<button id="createBtn" class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+									<a t:type="pagelink" t:page="admin/sys/OrganizationList" class="btn btn-default btn-flat">${message:cancel-btn}</a>
+									</div>
+								</div>
+							</t:form>
+							
+							<!-- 编辑组织机构的FROM -->
+							<t:form class="form-horizontal form-group dis-none" t:id="editForm"  t:zone="formZone">
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:name-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="eName" value="organization.name" t:validate="required" />
+										<t:hidden t:id="eId" id="eId" value="organization.id"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:contactName-label}${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="eContactName" value="organization.contactName"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:contactNumber-label}${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="eContactNumber" value="organization.contactNumber"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3">${message:address-label}${message:common-colon}
+									</label>
+									<div class="col-sm-6">
+										<input class="form-control" type="text" t:type="textfield" t:id="eAddress" value="organization.address"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-6">
+									<button id="editBtn" class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+									<a t:type="pagelink" t:page="admin/sys/OrganizationList" class="btn btn-default btn-flat">${message:cancel-btn}</a>
+									</div>
+								</div>
+							</t:form>
+							
+							<!-- 删除组织机构的FROM -->
+							<t:form class="form-horizontal form-group dis-none" t:id="deleteForm"  t:zone="formZone">
+								<t:hidden t:id="dId" id="dId" value="organization.id"/>
+								<t:hidden t:id="pdId" id="pdId" value="organization.parentId" />
+							</t:form>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	<!-- 删除组织机构的确认框 -->
+	<!-- <t:widgets.fdialog t:clientId="delOrgConfirm" t:params="{'title':${message:confirm-title},'height': 150, 'width':300}">
+    	${message:confirm-delete}
+    	<div class="mr-10 mt30">
+    		<span id="delOkBtn" class="l-btn l-btn-small l-btn-left l-btn-icon-left" style="margin-left: 162px;"><span class="l-btn-text">${message:btn-confrim}</span>
+    			<span class="l-btn-icon icon-ok"><t:widgets.FCharacter type="space" count="1"/></span></span>
+    		<span id="delCancelBtn" class="l-btn l-btn-small l-btn-left l-btn-icon-left" style="margin-left: 5px;"><span class="l-btn-text">${message:btn-cancel}</span>
+    			<span class="l-btn-icon icon-cancel"><t:widgets.FCharacter type="space" count="1"/></span></span>
+    	</div>
+	</t:widgets.fdialog> -->
+    
+</html>

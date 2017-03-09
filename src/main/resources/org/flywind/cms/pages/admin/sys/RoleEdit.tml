@@ -1,0 +1,121 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<style>
+		.menuContent {
+		    width: 300px;
+		    height: 400px;
+		    border: 1px solid #f2f2f2;
+		    background-color: #f2f2f2;
+		    overflow: auto;
+		}
+	</style>
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:role-edit-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/RoleList">${message:role-manage-label}</a>
+				</li>
+				<li>${message:role-edit-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="editForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<div class="form-group">
+				<label class="col-sm-3 control-label">${message:role-name-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" t:type="textfield" t:id="name" value="role.name" readonly="readonly"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:role-resources-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" t:type="textfield" t:id="resources" style="background-color: white;" readonly="readonly" value="resources"/>
+					<t:hidden t:id="resourceIds" id="resourceIds" />
+					<t:hidden t:id="oldResIds" id="oldResIds" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:role-description-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" t:type="textfield" t:id="description" value="role.description"/>
+					<t:hidden t:id="oldDesc" id="oldDesc" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-6">
+					<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+					<a t:type="pagelink" t:page="admin/sys/RoleList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+				</div>
+			</div>
+				
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- <section class="content-header">
+		<h1>
+			${message:role-edit-label}
+		</h1>
+	</section>
+	<section class="content">
+		
+		<t:alerts showDismissAll="false"/>
+		<form class="form-horizontal mt20" role="form" t:type="form" t:id="editForm">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:role-name-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" t:type="textfield" t:id="name" value="role.name" readonly="readonly"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:role-resources-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" t:type="textfield" t:id="resources" style="background-color: white;" readonly="readonly" value="resources"/>
+					<t:hidden t:id="resourceIds" id="resourceIds" />
+					<t:hidden t:id="oldResIds" id="oldResIds" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:role-description-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" t:type="textfield" t:id="description" value="role.description"/>
+					<t:hidden t:id="oldDesc" id="oldDesc" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-6">
+					<button class="btn btn-info btn-flat mr10">${message:submit-btn}</button>
+					<a t:type="pagelink" t:page="admin/sys/RoleList" class="btn btn-default btn-flat">${message:cancel-btn}</a>
+				</div>
+			</div>
+		</form>
+		
+	</section> -->
+	<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+        <ul id="tree" class="ztree" style="margin-top:0; width:300px;border: 1px solid #f2f2f2;background-color: #f2f2f2;"></ul>
+    </div>
+    <input type="hidden" value="admin/sys/RoleList" id="parentPage"/>
+</html>

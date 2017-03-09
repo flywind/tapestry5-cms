@@ -1,0 +1,91 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:version-log-list-title}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:version-log-list-title}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<t:zone t:id="versionLogListZone" id="versionLogListZone">
+					<div id="search-tab-1" class="tab-pane fade active in">
+						
+						<t:alerts showDismissAll="false"/>
+						<form class="form-inline" t:type="form" role="form" t:zone="versionLogListZone" t:id="searchForm" t:autofocus="false">
+							<div class="form-group mar-rgt">
+								<t:if test="cn">
+									<input class="form-control" placeholder="${message:log-title}" type="text" t:type="textfield" t:id="title" value="log.title"/>
+									<p:else>
+										<input class="form-control" type="text" t:type="textfield" t:id="titleEn" value="log.titleEn"/>
+									</p:else>
+								</t:if>
+							</div>
+							<button class="btn btn-primary mar-rgt" type="submit"><i class="fa fa-search mar-pixe-r5"></i> ${message:search-btn}</button>
+				            <a t:type="eventLink" t:event="reset" class="btn btn-default" t:zone="versionLogListZone"><i class="fa fa-eraser"></i> ${message:reset-btn}</a>
+						</form>
+					</div>
+					<t:security.hasPermission t:permission="versionlog:add">
+							
+			           	<a class="btn btn-success mar-pixe-r10 toolbarBtn" t:type="pagelink" t:page="admin/sys/VersionLogCreate">
+			           		<i class="fa fa-plus mar-pixe-r5"></i>${message:add-btn}
+			           	</a>
+			        
+			        </t:security.hasPermission>
+			        
+			        <t:security.hasPermission t:permission="versionlog:edit">
+						<t:widgets.FBootstrapTableBtn t:id="edit" zone="versionLogListZone" cls="btn btn-info mar-pixe-r10 toolbarBtn" linkType="page" itemCls="fa fa-pencil mar-pixe-r5" 
+							text="${message:edit-btn}" url="VersionLogUpdate" gridId="versionLogListId"/>
+						
+					</t:security.hasPermission>
+					
+					<t:security.hasPermission t:permission="versionlog:delete">
+					
+						<t:widgets.FBootstrapTableBtn t:id="delete" zone="versionLogListZone" cls="btn btn-danger toolbarBtn" itemCls="fa fa-trash-o mar-pixe-r5" 
+							text="${message:del-btn}" url="${delUrl}" gridId="versionLogListId"/>
+					
+					</t:security.hasPermission>
+					<t:widgets.FBootstrapTable t:id="versionLogListId" t:source="versionLogs" t:language="${lang}" t:columns="[{'field':'state','checkbox':'true'},
+					{field:'title',title:'${message:log-title}',formatter:'getTitle'},
+					{field:'version',title:'${message:log-version}'},
+					{field:'time',title:'${message:log-time}'},
+					{field:'hide',title:'${message:status}',formatter:'getStatus'},
+					{field:'content',title:'${message:log-content}',formatter:'getContent'}]" t:params="{'pagination':'true','showRefresh':'true','toolbar':'.toolbarBtn',
+																									'showToggle':'true','showColumns':'true'}"/>
+					</t:zone>
+				</div>
+			</div>
+	</div>
+	
+	<script type="text/javascript">
+		function getTitle(value,row){
+			var cn = ${cn};
+			if(cn){
+				return row.title;
+			}else{
+				return row.titleEn;
+			}
+		}
+		function getContent(value,row){
+			var cn = ${cn};
+			if(cn){
+				return row.content;
+			}else{
+				return row.contentEn;
+			}
+		}
+		function getStatus(value,row){
+			if(value === 0){
+				return '<small class="label label-success">${message:display-true}</small>';
+			}
+			return '<small class="label label-default">${message:display-false}</small>';
+		}
+	</script>
+	
+</html>

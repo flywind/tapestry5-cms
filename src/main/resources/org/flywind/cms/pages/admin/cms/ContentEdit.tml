@@ -1,0 +1,192 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:toEdit-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/cms/ContentList">${message:tone-manage-label}</a>
+				</li>
+				<li>${message:toEdit-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="meForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<t:if test="cn">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">${message:title-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+						<div class="col-sm-6">
+							<input class="form-control " type="text" placeholder="${message:title-label}"  t:type="textfield" t:id="title" value="item.title" t:validate="required"/>	
+						</div>
+					</div>
+					<p:else>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">${message:titleEn-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+							<div class="col-sm-6">
+								<input class="form-control " type="text" placeholder="${message:titleEn-label}"  t:type="textfield" t:id="titleEn" value="item.titleEn" t:validate="required"/>
+							</div>
+						</div>		
+					</p:else>
+				</t:if>
+				<div class="form-group auto-height">
+				      <label class="col-sm-3 control-label">${message:smallImgurl-label}<span class="text-danger"></span>${message:common-colon}</label>
+				      <div class="col-sm-6">
+				        <div class="f-img mar-pixe-r10">
+				        	<t:zone t:id="uploadImgZone" id="uploadImgZone">
+				        		<t:if test="newPicUrl">
+				        			<img width="90" height="90" src="${newPicUrl}"/>
+				        		</t:if>
+				        		<img width="90" height="90" src="${oldPic}"/>
+				        	</t:zone>
+				        </div>
+				        <div class="f-upload pad-pixe-t25">
+				        	<t:widgets.fajaxUpload t:id="uploadImage" t:itemCls="fa fa-upload mar-pixe-r5" t:multiple="false" t:allowedExtensions="[jpg, png, gif]" t:sizeLimit="0.1M"/>
+				        </div>
+				      </div>     
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:type-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+					<div class="col-sm-6">
+						<select class="form-control  " type="text" t:type="select" t:id="technologyType" value="item.technologyType" t:model="types" t:blankOption="ALWAYS" t:validate="required"/>
+					</div>
+				</div>
+				<t:if test="cn">
+				<div class="form-group auto-height" style="min-height:360px;">
+					<label class="col-sm-3 control-label">${message:content-label}${message:common-colon}</label>
+					<div class="col-sm-6">			
+						<input class="form-control" style="height:300px;border:none;display:none;" type="text"  t:type="textarea" t:id="content" t:mixins="widgets/FSummernote" FSummernote.tools="full" FSummernote.uploadToServer="true" FSummernote.url="/rest/file/upload" value="item.content"/>
+					</div>
+				</div>
+				<p:else>
+				<div class="form-group auto-height" style="min-height:360px;">
+					<label class="col-sm-3 control-label">${message:contentEn-label}${message:common-colon}</label>
+					<div class="col-sm-6">		
+						<input class="form-control" style="height:300px;border:none;display:none;" type="text" t:type="textarea" t:id="contentEn" t:mixins="widgets/FSummernote" FSummernote.tools="full" FSummernote.uploadToServer="true" FSummernote.url="/rest/file/upload" FSummernote.language="en" value="item.contentEn"/>	
+					</div>
+				</div>
+				</p:else>
+				</t:if>
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:isOpen-label}${message:common-colon}</label>
+					<div class="col-sm-6">
+							<select class="form-control  " type="text" t:type="select" t:id="isOpen" value="item.isOpen" t:model="false=${message:not-show-msg},true=${message:show-msg}" t:validate="required"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-3 control-label">${message:isHot-label}${message:common-colon}</label>
+					<div class="col-sm-6">
+							<select class="form-control  " type="text" t:type="select" t:id="isHot" value="item.isHot" t:model="false=${message:not-hot-msg},true=${message:hot-msg}" t:validate="required"/>
+					</div>
+				</div>
+			
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-6">
+						<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+						<a t:type="pagelink" t:page="admin/cms/ContentList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+					</div>
+				</div>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<!-- <section class="content pb35 clearfix">
+		
+		<form class="form-horizontal mt20 clearfix" role="form" t:type="form" t:id="meForm" autofocus="false">
+			<t:alerts showDismissAll="false"/>
+			<t:if test="cn">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:title-label}<span class="cred">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-9">
+					<input class="form-control sm-w300" type="text" placeholder="${message:title-label}"  t:type="textfield" t:id="title" value="item.title" t:validate="required"/>	
+				</div>
+			</div>
+			<p:else>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:titleEn-label}<span class="cred">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-9">
+					<input class="form-control sm-w300" type="text" placeholder="${message:titleEn-label}"  t:type="textfield" t:id="titleEn" value="item.titleEn" t:validate="required"/>
+				</div>
+			</div>		
+			</p:else>
+			</t:if>
+			<div class="form-group">
+			      <label class="col-sm-3 control-label">${message:smallImgurl-label}<span class="cred"></span>${message:common-colon}</label>
+			      <div class="col-sm-9">
+			        <div class="f-img mr10">
+			        	<t:zone t:id="uploadImgZone" id="uploadImgZone">
+			        		<t:if test="newPicUrl">
+			        			<img width="90" height="90" src="${newPicUrl}"/>
+			        		</t:if>
+			        		<img width="90" height="90" src="${oldPic}"/>
+			        	</t:zone>
+			        </div>
+			        <div class="f-upload pt25">
+			        	<t:widgets.fajaxUpload t:id="uploadImage" t:multiple="false" t:allowedExtensions="[jpg, png, gif]" t:sizeLimit="0.1M"/>
+			        </div>
+			      </div>     
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:type-label}<span class="cred">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-9">
+					<select class="form-control sm-w300 b-white" type="text" t:type="select" t:id="technologyType" value="item.technologyType" t:model="types" t:blankOption="ALWAYS" t:validate="required"/>
+				</div>
+			</div>
+			<t:if test="cn">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:content-label}${message:common-colon}</label>
+				<div class="col-sm-9">			
+					<input class="form-control" type="text" style="height:300px;" placeholder="${message:content-label}"  t:type="textarea" t:id="content" t:mixins="widgets/editor" editor.upImgUrl="/rest/upload" value="item.content"/>
+				</div>
+			</div>
+			<p:else>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:contentEn-label}${message:common-colon}</label>
+				<div class="col-sm-9">			
+					<input class="form-control" type="text" style="height:300px;" placeholder="${message:contentEn-label}"  t:type="textarea" t:id="contentEn" t:mixins="widgets/editor" editor.upImgUrl="/rest/upload" value="item.contentEn"/>	
+				</div>
+			</div>
+			</p:else>
+			</t:if>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:isOpen-label}${message:common-colon}</label>
+				<div class="col-sm-9">
+						<select class="form-control sm-w300 b-white" type="text" t:type="select" t:id="isOpen" value="item.isOpen" t:model="false=${message:not-show-msg},true=${message:show-msg}"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:isHot-label}${message:common-colon}</label>
+				<div class="col-sm-9">
+						<select class="form-control sm-w300 b-white" type="text" t:type="select" t:id="isHot" value="item.isHot" t:model="false=${message:not-hot-msg},true=${message:hot-msg}"/>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-9">
+					<button class="btn btn-info btn-flat mr10">${message:submit-btn}</button>
+					<a t:type="pagelink" t:page="admin/cms/ContentList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+				</div>
+			</div>
+		</form>
+		
+	</section>
+	<input type="hidden" value="admin/cms/ContentList" id="parentPage"/> -->
+</html>

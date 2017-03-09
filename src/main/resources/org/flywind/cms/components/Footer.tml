@@ -1,0 +1,5 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+ xmlns:p="tapestry:parameter">
+<div class="footer"><t:if test="cn">${systemSeting.copyright}<p:else>${systemSeting.copyrightEn}</p:else>
+      </t:if></div>
+</t:container>

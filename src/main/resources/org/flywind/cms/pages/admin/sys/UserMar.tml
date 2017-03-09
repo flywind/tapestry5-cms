@@ -1,0 +1,61 @@
+<html t:type="FLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<section class="content-header">
+		<h1>
+			用户管理
+			<small>管理用户资料</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li>
+				<a href="#">
+					<i class="fa fa-dashboard"></i>
+					管理控制台
+				</a>
+			</li>
+			<li class="active">用户管理</li>
+		</ol>
+	</section>
+	<section class="content">
+
+		<form class="form-inline" role="form">
+			<div class="form-group">
+				<label class="control-label">用户名：</label>
+				<input class="iw120 form-control" type="text" placeholder="用户名" />
+			</div>
+			<div class="form-group">
+				<label class="control-label">员工姓名：</label>
+				<input class="form-control" type="text" placeholder="员工姓名" />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-block btn-info btn-flat">搜索</button>
+			</div>
+		</form>
+		<div class="btn-box">
+		<t:security.hasPermission t:permission="user:create">
+			<div class="btn-group mr10">
+	           <button type="button" class="btn btn-sm btn-success btn-flat"><i class="fa fa-plus mr5"></i>添加 </button>
+	         </div>
+         </t:security.hasPermission>
+         <t:security.hasPermission t:permission="user:edit">
+	         <div class="btn-group mr10">
+	           <button type="button" class="btn btn-sm btn-info btn-flat"><i class="fa fa-pencil mr5"></i>编辑</button>
+	         </div>
+         </t:security.hasPermission>
+         <t:security.hasPermission t:permission="user:delete">
+         <div class="btn-group mr10">
+           <button type="button" class="btn btn-sm btn-danger btn-flat"><i class="fa fa-remove mr5"></i>删除</button>
+         </div>
+         </t:security.hasPermission>
+		</div>
+		<t:grid source="users" class="table table-bordered table-striped 
+			table-hover" row="user" add="role">
+			<!-- <t:loop source="${user.roles}" value="roleName">${roleName}</t:loop> -->
+			<p:RoleCell>
+				<!-- <t:loop source="${user.roles}" value="roleName">${roleName}</t:loop> -->
+				<!-- ${user.getRoles()} -->
+			</p:RoleCell>
+		</t:grid>
+
+
+	</section>
+</html>

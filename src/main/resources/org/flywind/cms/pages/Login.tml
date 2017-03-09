@@ -1,0 +1,36 @@
+<html t:type="LoginLayout" t:title="${message:userLoginLabel}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<div class="cls-content-sm panel">
+      <div class="panel-body pR">
+	      	<div class="lang-position"><t:FLocaleBar/></div>
+	          <div class="mar-ver pad-btm">
+	              <h3 class="h4 mar-no">${message:userLoginLabel}</h3>
+	              <p class="text-muted">${message:userLoginInfoLabel}</p>
+	              <t:if test="loginMessage">
+	               <div class="alert alert-pink alert-sign">
+	                   ${loginMessage}
+	               </div>
+	              </t:if>
+	          </div>
+	          <form t:type="form" t:id="tynamoLoginForm" t:autofocus="false">
+	              <div class="form-group">
+	                  <input type="text" class="form-control" placeholder="${message:tynamoLogin-label}" t:type="textfield" t:id="tynamoLogin" t:validate="required"/>
+	              </div>
+	              <div class="form-group">
+	                  <input type="password" class="form-control" placeholder="${message:tynamoPassword-label}" t:type="passwordfield" t:id="tynamoPassword" t:validate="required"/>
+	                  <input t:type="hidden" t:id="customerCode" value="customerCode"/>
+					  <input t:type="hidden" t:id="dynamicPwd" id="dynamicPwd" value="dynamicPwd"/>
+	              </div>
+	              <div class="checkbox pad-btm text-left">
+	                  <input t:type="checkbox" class="magic-checkbox" t:id="tynamoRememberMe" value="tynamoRememberMe"/>
+	                  <label for="tynamoRememberMe">${message:rememberMeLabel}</label>
+	                  <a href="#;" t:type="pagelink" t:page="FindPassword" class="btn-link mar-rgt blue-link pull-right">${message:forgetPassword}</a>
+	              </div>
+	              <button class="btn btn-primary btn-lg btn-block" id="loginSubmitBtn">${message:submit-btn}</button>
+	          </form>
+	      </div>
+	
+	      <div class="pad-all">	                
+	          <span>${message:reg-info}</span><a href="#;" t:type="pagelink" t:page="Signup" class="btn-link blue-link mar-lft">${message:reg-label}</a>
+	      </div>
+	  </div>
+</html>

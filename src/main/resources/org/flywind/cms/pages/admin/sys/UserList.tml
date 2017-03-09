@@ -1,0 +1,67 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:user-manage-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>${message:user-manage-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+			<div class="panel">
+				<div class="panel-body min-content">
+					<t:zone t:id="listZone" id="listZone">
+					<div id="search-tab-1" class="tab-pane fade active in">
+						
+						<t:alerts showDismissAll="false"/>
+						<form class="form-inline" t:type="form" t:zone="listZone" t:autofocus="false" t:id="searchForm">
+							<div class="form-group mar-rgt">
+								<input class="iw120 form-control"  t:type="textfield" t:id="username"  type="text" placeholder="${message:username-label}" />
+							</div>
+							<div class="form-group mar-rgt">
+								<input class="form-control"  t:type="textfield" t:id="name"  type="text" placeholder="${message:user-relname-label}" />
+							</div>
+							<div class="form-group mar-rgt">
+								<t:Hidden t:id="companyId" value="companyId"/>
+								<input class="form-control"  t:type="textfield" t:id="companyName" type="text" placeholder="${message:companyName-label}" />
+							</div>
+							<button class="btn btn-primary mar-rgt" type="submit"><i class="fa fa-search mar-pixe-r5"></i> ${message:search-btn}</button>
+				            <a t:type="eventLink" t:event="reset" class="btn btn-default" t:zone="listZone"><i class="fa fa-eraser"></i> ${message:reset-btn}</a>
+
+				        </form>
+					</div>
+					<t:security.hasPermission t:permission="user:add">
+			           <a t:type="pagelink" t:page="admin/sys/UserCreate" class="btn btn-success mar-pixe-r10 toolbarBtn"><i class="fa fa-plus mar-pixe-r5"></i>${message:add-btn} </a>
+			         </t:security.hasPermission>
+			         <t:security.hasPermission t:permission="user:edit">
+						<t:widgets.FBootstrapTableBtn t:id="edit" cls="btn btn-info mar-pixe-r10 toolbarBtn" itemCls="fa fa-pencil mar-pixe-r5" linkType="page" 
+							text="${message:edit-btn}" url="UserUpdate" gridId="gridData" />			
+					</t:security.hasPermission>
+					<t:security.hasPermission t:permission="user:delete">
+						<t:widgets.FBootstrapTableBtn t:id="delete" zone="listZone" cls="btn btn-danger mar-pixe-r10 toolbarBtn" itemCls="fa fa-trash-o mar-pixe-r5" 
+							text="${message:del-btn}" url="${delUrl}" gridId="gridData"/>
+						<t:widgets.FBootstrapTableBtn t:id="resetPwd" cls="btn btn-danger toolbarBtn" itemCls="fa fa-undo mar-pixe-r5" linkType="page" 
+							text="${message:resetPwd-btn}" url="ResetPwd" gridId="gridData" />
+					</t:security.hasPermission> 
+					<t:widgets.FBootstrapTable t:id="gridData" t:source="users" t:language="${lang}" t:columns="[{'field':'state','checkbox':'true'},
+					{field:'username',title:'${message:username-label}'},
+					{field:'name',title:'${message:name-label}'},
+					{field:'roleNames', title:'${message:roleNames-label}'},
+					{field:'companyName', title:'${message:companyName-label}'},
+					{field:'lastUpdatePerson', title:'${message:lastUpdatePerson-label}'},
+					{field:'lastUpdateTime',title:'${message:lastUpdateTime-label}'}]" t:params="{'pagination':'true','showRefresh':'true','toolbar':'.toolbarBtn',
+																									'showToggle':'true','showColumns':'true'}"/>	
+					</t:zone>
+				</div>
+			</div>
+	</div>
+
+	<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+        <ul id="tree" class="ztree" style="margin-top:0; width:275px;border: 1px solid #f2f2f2;background-color: #f2f2f2;"></ul>
+    </div>
+    
+</html>

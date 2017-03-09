@@ -1,0 +1,45 @@
+<html t:type="LoginLayout" t:title="${message:signup-title}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	<div class="cls-content-lg panel">
+            <div class="panel-body bg-white">
+            	<div class="lang-position"><t:FLocaleBar/></div>
+                <div class="mar-ver pad-btm" id="alertMsg">
+                    <h3 class="h4 mar-no">${message:signup-title}</h3>
+                    <p class="text-muted">${message:signup-info}</p>
+                    
+                    <!-- <div class="alert alert-pink alert-sign">
+                        
+                    </div> -->
+                    
+                </div>
+                <form id="signForm">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="${message:name-label}" id="name" name="name" type="text"/>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="${message:password-label}" name="password" id="password" type="password"/>
+                                <input type="hidden" value="${dynamicPwd}" id="hp"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="${message:email-label}" id="email" name="email" type="email"/>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="${message:confirmpwd-label}" name="confirmpwd" id="confirmpwd" type="password"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkbox pad-btm text-left">
+                        <input checked="checked" class="magic-checkbox" type="checkbox"/>
+                        <label for="signup-form-checkbox">${message:agree-label} <a href="#" class="btn-link blue-link">${message:protocol-label}</a></label>
+                    </div>
+                    <a class="btn btn-mint btn-block" id="signBtn" style="color:#fff;">${message:regist-label}</a>
+                </form>
+            </div>
+            <div class="pad-all">
+            	${message:login1-info} <a href="#;" t:type="pagelink" t:page="Login" class="btn-link mar-rgt blue-link">${message:login2-info}</a>
+            </div>
+        </div>
+</html>

@@ -1,0 +1,66 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:linkAdd-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/FriendLinkList">${message:link-manage-label}</a>
+				</li>
+				<li>${message:linkAdd-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="meForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<div class="form-group">
+				<label class="col-sm-3 control-label">${message:linkName-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:linkName-label}"  t:type="textfield" t:id="linkName" value="link.linkName" t:validate="required"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:linkUrl-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:linkUrl-label}" t:type="textfield" t:id="linkUrl" value="link.linkUrl" t:validate="required"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:linkLogo-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+						<input class="form-control" type="text" placeholder="${message:linkLogo-label}" t:type="textfield" t:id="linkLogo" value="link.linkLogo" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:isOpen-label}${message:common-colon}</label>
+				<div class="col-sm-6">
+						<select class="form-control" type="text" t:type="select" t:id="isOpen" value="link.isOpen" t:model="literal:false=${message:not-show-msg},true=${message:show-msg}" t:validate="required"/>
+				</div>
+			</div>
+				
+				
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-6">
+					<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+					<a t:type="pagelink" t:page="admin/sys/FriendLinkList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+				</div>
+			</div>
+				
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+	
+</html>

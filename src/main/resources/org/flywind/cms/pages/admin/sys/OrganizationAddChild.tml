@@ -1,0 +1,42 @@
+<html t:type="FFLayout" t:title="${message:organization-label}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	
+	<form t:type="form"  class="form-horizontal form-group" t:id="appendChildForm" >
+	      <div class="form-group">
+		      <label class="col-sm-2 control-label">${message:parent-node-label}${message:common-colon}</label>
+		       <div class="col-sm-3">
+		        <label class="control-label">${parentNodeName}</label>
+		       </div>
+	      </div>
+	       <div class="form-group">
+			   <label class="col-sm-2 control-label">${message:organization-name-label}<span class="cred">${message:common-all}</span>${message:common-colon}</label>
+			   <div class="col-sm-3">
+			   <input class="form-control" type="text" placeholder="${message:organization-name-label}"  t:type="textfield" t:id="name" value="organization.name" t:validate="required"/>	
+		       </div>
+		  </div>
+		  <div class="form-group">
+				<label class="col-sm-2 control-label">${message:organization-contactName-label}${message:common-colon}</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text" placeholder="${message:organization-contactName-label}"  t:type="textfield" t:id="contactName" value="organization.contactName" />	
+				</div>
+		  </div>
+		  <div class="form-group">
+				<label class="col-sm-2 control-label">${message:organization-contactNumber-label}${message:common-colon}</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text" placeholder="${message:organization-contactNumber-label}"  t:type="textfield" t:id="contactNumber" value="organization.contactNumber" />	
+				</div>
+		 </div>
+		  <div class="form-group">
+				<label class="col-sm-2 control-label">${message:organization-address-label}${message:common-colon}</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text" placeholder="${message:organization-address-label}"  t:type="textfield" t:id="address" value="organization.address" />	
+				</div>
+		 </div>
+	    <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10"> 
+	      <a t:type="linksubmit" class="btn btn-sm btn-success btn-flat"><i class="fa fa-plus mr5"></i>${message:submit-label}</a>
+	    </div> 
+	    </div>
+	</form>
+
+</html>

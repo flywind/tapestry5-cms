@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+<head>
+	<meta charset="utf-8"/>
+</head>
+	<style>
+		body{text-align: center;background-color: #f8f8f8;}
+		.my-error{text-align: left;width:1000px;height:306px; margin:100px auto; background-color:#fff; padding:80px 80px 100px 80px; color:#404040;font-family:microsoft yahei;}
+		.error-left-icon{ width:180px; height:350px; background:url(${context:assets/images/404.png}) no-repeat left top; float:left;}
+		.error-right-icon{ width:600px; float:right; line-height:23px;}
+		.error-right-icon h2{ font-size:20px; margin-top:20px;}
+		.error-right-top{ margin-top:15px;}
+		.my-error ul{list-style: none;}
+	</style>
+<body>
+	
+	<div class="my-error">
+		<div class="error-left-icon">
+		</div>
+		<div class="error-right-icon act-show">
+			<t:if test="unauthorized">
+				<h2>${message:unauthorized.error1}</h2>
+				<div class="error-right-top">${message:unauthorized.error2}</div>
+				<div>
+					<ul>
+						<li>
+							${message:unauthorized.error3}
+						</li>
+						<li>
+							${message:unauthorized.error4}
+						</li>
+						<li>
+							<t:pagelink t:page="admin/Index">${message:back.start}</t:pagelink>
+						</li>	
+					</ul>
+				</div>
+				<p:else>
+					<h2>${message:404.error1}</h2>
+					<div class="error-right-top">${message:404.error2}</div>
+					<div>
+						<ul>
+							<li>
+								${message:404.error3}
+							</li>
+							<li>
+								${message:404.error4}
+							</li>
+							<li>
+								
+								<t:pagelink t:page="Start">${message:back.start}</t:pagelink>
+							</li>
+							<t:if test="exception">
+								<li style="display:none">${exception.message}</li>
+							</t:if>
+						</ul>
+					</div>
+				</p:else>
+			</t:if>
+		</div>
+		<div class="clear"></div>
+	</div>
+	</body>
+</html>

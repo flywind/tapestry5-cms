@@ -1,0 +1,17 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+<footer id="footer">
+            <div class="pull-right pad-rgt">
+                <span>${message:address-label}:<t:widgets.FCharacter type="space" count="2"/></span>
+      <t:if test="cn">
+      ${systemSeting.address}
+      <p:else>
+      ${systemSeting.addressEn}
+      </p:else>
+      </t:if>
+            </div>
+
+            <p class="pad-lft"><t:if test="cn">${systemSeting.copyright}<p:else>${systemSeting.copyrightEn}</p:else>
+      </t:if></p>
+
+</footer>
+</t:container>

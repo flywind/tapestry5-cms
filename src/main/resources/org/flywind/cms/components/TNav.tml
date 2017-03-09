@@ -1,0 +1,85 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+<nav id="mainnav-container">
+                <div id="mainnav">
+
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+                                <ul id="mainnav-menu" class="list-group">
+						            <!--Home page-->
+						            <t:if test="homePage">
+						            	<li class="active-link">
+							                <a href="#;" t:type="pagelink" t:page="admin/Index">
+							                    <i class="ion-monitor"></i>
+							                    <span class="menu-title">
+													<strong>${message:index-label}</strong>
+												</span>
+							                </a>
+							            </li>
+						            	<p:else>
+						            		<li>
+								                <a href="#;" t:type="pagelink" t:page="admin/Index">
+								                    <i class="ion-monitor"></i>
+								                    <span class="menu-title">
+														<strong>${message:index-label}</strong>
+													</span>
+								                </a>
+								            </li>
+						            	</p:else>
+						            </t:if>
+						            
+									<!-- Menu -->
+						            <t:loop source="menus" value="menu" index="count">
+							            <t:if test="cn">
+								            <li class="${menu.activeStyle}">
+								                <a href="#">
+								                    <i class="fa ${menu.ioncCls}"></i>
+								                    <span class="menu-title">
+														<strong>${menu.name}</strong>
+													</span>
+													<i class="arrow"></i>
+								                </a>
+								                <ul class="collapse">
+								                    <t:loop source="menu.childResource" value="imenu">
+									              		<t:if test="imenu.url">
+									              			<li class="${imenu.activeStyle}"><a href="${webRootPath}${upath}${imenu.url}">${imenu.name}</a></li>
+									              			<p:else>
+									              				<li class="${imenu.activeStyle}"><a href="#;">${imenu.name}</a></li>
+									              			</p:else>
+									              		</t:if>
+									              	</t:loop>
+								                </ul>
+								            </li>
+							            <p:else>
+							            	<li class="${menu.activeStyle}">
+								                <a href="#">
+								                    <i class="fa ${menu.ioncCls}"></i>
+								                    <span class="menu-title">
+														<strong>${menu.nameEn}</strong>
+													</span>
+													<i class="arrow"></i>
+								                </a>
+								                <ul class="collapse">
+								                    <t:loop source="menu.childResource" value="imenu">
+									              		<t:if test="imenu.url">
+									              			<li class="${imenu.activeStyle}"><a href="${webRootPath}${upath}${imenu.url}">${imenu.nameEn}</a></li>
+									              			<p:else>
+									              				<li class="${imenu.activeStyle}"><a href="#;">${imenu.nameEn}</a></li>
+									              			</p:else>
+									              		</t:if>
+									              	</t:loop>
+								                </ul>
+								            </li>
+							            </p:else>
+							            </t:if>
+						            </t:loop>
+						            				
+						        </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+</t:container>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<meta charset="utf-8" />
+	<head>
+		<title>${title}</title>
+		<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="${context:assets/tlayout/js/pace/pace.min.css}" rel="stylesheet"/>
+    	<script src="${context:assets/tlayout/js/pace/pace.min.js}"/>
+	</head>
+	<body>
+		<div id="container" class="cls-container">
+
+		    <div id="bg-overlay" class="bg-img cur-img"></div>
+		
+		    <div class="cls-content">
+		        <t:body/>
+		    </div>
+		
+		    <div class="signup-bg">
+		        <div id="signup-bg-list">
+		            <div class="signup-loading"><i class="psi-repeat-2"></i></div>
+		            <img class="signup-chg-bg" src="${context:assets/tlayout/images/bg-img/thumbs/bg-img-1.jpg}"/>
+		            <img class="signup-chg-bg" src="${context:assets/tlayout/images/bg-img/thumbs/bg-img-2.jpg}"/>
+		            <img class="signup-chg-bg" src="${context:assets/tlayout/images/bg-img/thumbs/bg-img-3.jpg}"/>
+		            <img class="signup-chg-bg" src="${context:assets/tlayout/images/bg-img/thumbs/bg-img-4.jpg}"/>
+		            <img class="signup-chg-bg" src="${context:assets/tlayout/images/bg-img/thumbs/bg-img-5.jpg}"/>
+		            <img class="signup-chg-bg" src="${context:assets/tlayout/images/bg-img/thumbs/bg-img-6.jpg}"/>
+		            <img class="signup-chg-bg" src="${context:assets/tlayout/images/bg-img/thumbs/bg-img-7.jpg}"/>
+		        </div>
+		    </div>
+		
+		
+		</div>
+		
+	</body>
+</html>

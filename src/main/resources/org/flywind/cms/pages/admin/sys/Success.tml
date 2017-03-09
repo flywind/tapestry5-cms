@@ -1,0 +1,4 @@
+<html t:type="FFLayout" t:title="${message:organization-label}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<a class="btn btn-sm btn-success btn-flat" href="javascript:parent.frames['tree'].location.reload();"><i class="fa fa-refresh mr5"></i>${message:refresh-label}</a>
+</html>

@@ -1,0 +1,48 @@
+<html t:type="FFLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<section class="content">
+	<t:alerts showDismissAll="false"/>
+	<t:form class="form-horizontal form-group" t:id="maintainForm">
+	     <div class="form-group">
+				<label class="col-sm-2 control-label">${message:organization-name-label}<span class="cred">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text" placeholder="${message:organization-name-label}"  t:type="textfield" t:id="name" value="organization.name" t:validate="required"/>	
+				</div>
+		 </div>
+		  <div class="form-group">
+				<label class="col-sm-2 control-label">${message:organization-contactName-label}${message:common-colon}</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text" placeholder="${message:organization-contactName-label}"  t:type="textfield" t:id="contactName" value="organization.contactName" />	
+				</div>
+		 </div>
+		  <div class="form-group">
+				<label class="col-sm-2 control-label">${message:organization-contactNumber-label}${message:common-colon}</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text" placeholder="${message:organization-contactNumber-label}"  t:type="textfield" t:id="contactNumber" value="organization.contactNumber" />	
+				</div>
+		 </div>
+		  <div class="form-group">
+				<label class="col-sm-2 control-label">${message:organization-address-label}${message:common-colon}</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text" placeholder="${message:organization-address-label}"  t:type="textfield" t:id="address" value="organization.address" />	
+				</div>
+		 </div>
+		<!-- <div class="form-group">	
+			<input class="form-control" type="text" placeholder="${message:organization-name-label}"  t:type="textfield" t:id="name" value="organization.name" t:validate="required"/>	
+		</div>	 -->
+		<div class="form-group">    
+		         <div class="col-sm-offset-2 col-sm-10"> 
+		           
+		           <a t:type="linksubmit" class="btn btn-sm btn-info btn-flat mr10"><i class="fa fa-pencil mr5"></i>${message:edit-label}</a>
+		           <a href="#;" id="appendChildBtn" class="btn btn-sm btn-success btn-flat mr10"><i class="fa fa-plus mr5"></i>${message:add-child-label}</a>
+		           <t:if test="nodel" negate="true">
+		           <a  t:type="eventlink" t:event="del" class="btn btn-sm btn-danger btn-flat mr10"><i class="fa fa-remove mr5"></i>${message:del-label}</a>
+	               </t:if>
+	              <!--  <t:if test="nodel" negate="true">
+	               <a href="#;" id="moveBtn" class="btn btn-sm btn-info btn-flat"><i class="fa fa-expand mr5"></i>${message:move-child-label}</a>
+	               </t:if> -->
+		         </div>            
+		</div>
+	</t:form>
+	</section>
+</html>

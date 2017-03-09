@@ -1,0 +1,105 @@
+<html t:type="TLayout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+	xmlns:p="tapestry:parameter">
+	<style>
+		.menuContent {
+		    width: 300px;
+		    height: 400px;
+		    border: 1px solid #f2f2f2;
+		    background-color: #f2f2f2;
+		    overflow: auto;
+		}
+	</style>
+	<div id="page-title">
+		<h1 class="page-header text-overflow">
+			<span class="title">${message:userAdd-label}</span>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/Index">${message:index-label}</a>
+				</li>
+				<li>
+					<a href="#;" t:type="pagelink" t:page="admin/sys/UserList">${message:user-manage-label}</a>
+				</li>
+				<li>${message:userAdd-label}</li>
+			</ol>
+		</h1>
+	</div>
+	<div id="page-content">
+		<div class="panel">
+			
+				<form class="form-horizontal clearfix" role="form" t:type="form" t:id="createForm" autofocus="false">
+				<div class="panel-body">
+				<t:alerts showDismissAll="false"/>
+				<div class="form-group">
+				<label class="col-sm-3 control-label">${message:userName-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:userName-label}"  t:type="textfield" t:id="username" value="user.userName" t:validate="required" t:mixins="ZoneUpdater" ZoneUpdater.clientEvent="blur" ZoneUpdater.event="userCheck" ZoneUpdater.zone="userCheckZone"/>
+					<t:zone t:id="userCheckZone" id="userCheckZone" style="display:none;">
+						<p class="vred" id="uError"></p>
+					</t:zone>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:name-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:name-label}" t:type="textfield" t:id="name" value="user.name" t:validate="required"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:companyName-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+						<t:Hidden t:id="companyId" value="user.companyId"/>
+						<input class="form-control b-white"  readonly="readonly"  type="text" placeholder="${message:companyName-label}" t:type="textfield" t:id="companyName" value="companyName" t:validate="required" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:mobile-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:mobile-label}" t:type="textfield" t:id="mobile" value="user.mobile" t:validate="required"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:email-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control" type="text" placeholder="${message:email-label}" t:type="textfield" t:id="email" value="user.email" t:validate="required,email" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:password-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<t:radiogroup t:id="sendPwd" value="sendPwd">
+						<t:label for="sendPwdEmail" style="margin-right:8px;"/>
+						<t:radio t:id="sendPwdEmail" value="1" label="${message:send-pwd-email-label}" checked="checked"/>
+						<t:label for="sendPwdPhone"  style="margin-right:8px; margin-left: 40px;"/>
+						<t:radio t:id="sendPwdPhone" value="2" label="${message:send-pwd-phone-label}"/>
+					</t:radiogroup>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">${message:role-label}<span class="text-danger">${message:common-all}</span>${message:common-colon}</label>
+				<div class="col-sm-6">
+					<input class="form-control b-white"  readonly="readonly" type="text" placeholder="${message:role-label}" t:type="textfield" t:id="roles" t:validate="required" />
+					<t:hidden t:id="roleIds" id="roleIds" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-6">
+					<button class="btn btn-info btn-flat mar-pixe-r10">${message:submit-btn}</button>
+					<a t:type="pagelink" t:page="admin/sys/UserList" class="btn btn-default btn-flat">${message:cancel-btn}</a>	
+				</div>
+			</div>
+				
+				</div>
+			</form>
+			
+		</div>
+	</div>
+
+	<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+        <ul id="tree" class="ztree" style="margin-top:0;"></ul>
+    </div>
+    <div id="roleMenuContent" class="menuContent" style="display:none; position: absolute;">
+        <ul id="roleTree" class="ztree" style="margin-top:0;"></ul>
+    </div>
+</html>
