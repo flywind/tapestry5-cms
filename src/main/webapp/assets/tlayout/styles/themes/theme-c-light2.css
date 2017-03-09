@@ -71,7 +71,7 @@ body,
 
 
 #container.boxed-layout .boxed {
-	margin: 0 auto 60px;
+	margin: 0 auto;
 }
 #container.boxed-layout .boxed .content{
 	margin-top: 60px;
@@ -1120,4 +1120,7 @@ ul.notes li div {
 .panel-title2{
 	line-height: 1.42857143;
 	display: block;padding: 10px 15px;
+}
+.pagination{
+	margin-bottom: 70px;
 }
