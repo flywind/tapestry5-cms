@@ -6,6 +6,8 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Path;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.javascript.StylesheetLink;
+import org.apache.tapestry5.services.javascript.StylesheetOptions;
 import org.flywind.business.entities.sys.SystemSeting;
 import org.flywind.business.services.sys.SystemSetingService;
 import org.flywind.cms.base.AppBase;
@@ -30,12 +32,17 @@ public class Layout extends AppBase {
 	@Path("context:assets/tlayout/styles/themes/theme-c-light2.css")
 	private Asset themeclight;
 	
+	@Inject
+	@Path("context:assets/tlayout/styles/nonsupport.css")
+	private Asset nonsupportCss;
+	
 	@Property
 	private String pagetitle;
 	
 	public void setupRender(){
 		javaScriptSupport.importStylesheet(t5baseCss);
 		javaScriptSupport.importStylesheet(themeclight);
+		javaScriptSupport.importStylesheet(new StylesheetLink(nonsupportCss, new StylesheetOptions().withCondition("lt IE 10")));
 		
 		SystemSeting  querySysSeting = systemSetingService.querySysSetingByCustomerCode("0755");
 		

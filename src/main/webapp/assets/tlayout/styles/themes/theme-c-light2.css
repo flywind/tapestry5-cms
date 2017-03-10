@@ -1124,3 +1124,6 @@ ul.notes li div {
 .pagination{
 	margin-bottom: 70px;
 }
+.nosupport{
+	display:none;
+}

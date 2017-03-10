@@ -26,6 +26,22 @@ var _hmt = _hmt || [];
 		
 	</style>
 	<body>
+		<div class="my-error nosupport">
+			<div class="error-left-icon"></div>
+			<div class="error-right-icon act-show">
+				<h2>${message:nosupport.error1}</h2>
+				<div class="error-right-top">${message:nosupport.error2}</div>
+				<div>
+					<ul>
+						<li>${message:nosupport.error3}</li>
+						<li>${message:nosupport.error4}</li>
+						<li>${message:nosupport.error5}</li>
+						<li>${message:nosupport.error6}</li>
+					</ul>
+				</div>	
+			</div>
+			<div class="clear"></div>
+		</div>
 		<div id="container" class="boxed-layout">
 			<t:Header/>
 			<div class="boxed">

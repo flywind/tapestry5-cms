@@ -78,6 +78,9 @@ public class PostsDetial extends AppBase {
 		
 		if(posts == null){
 			posts = postsService.getPostsById(id);
+			count = posts.getClicks() + 1;
+			posts.setClicks(count);
+			postsService.updatePosts(posts);
 			discusses = discussService.getDiscussByPostsId(id);	
 		}	
 		
@@ -117,18 +120,6 @@ public class PostsDetial extends AppBase {
 			posts = postsService.getPostsById(id);
 			ajaxResponseRenderer.addRender(loveZone);
 		}
-	}
-	
-	public void afterRender(){
-		String countLink = componentResources.createEventLink("updateCount", id).toURI();
-		javaScriptSupport.require("inits/postsdetial").invoke("count").with(countLink);
-	}
-	
-	public void onUpdateCount(Long id){
-		posts = postsService.getPostsById(id);
-		count = posts.getClicks() + 1;
-		posts.setClicks(count);
-		postsService.updatePosts(posts);
 	}
 	
 	public boolean isUserInfo(){
