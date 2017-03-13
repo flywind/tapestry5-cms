@@ -69,7 +69,8 @@ public class NewEditorUpload {
 		System.out.println("文件大小::::::"+Integer.parseInt(filesize)/1024 + "K");
 		if(Integer.parseInt(filesize)/1024 > 300){
 			JSONObject json = new JSONObject();
-			json.put("err", "300K");
+			json.put("err", "Upload file error!");
+			json.put("limitSize", "300K");
 	        return json.toCompactString();
 		}
 		

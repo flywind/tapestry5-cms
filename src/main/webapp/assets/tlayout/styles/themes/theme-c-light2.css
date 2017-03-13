@@ -1121,7 +1121,7 @@ ul.notes li div {
 	line-height: 1.42857143;
 	display: block;padding: 10px 15px;
 }
-.wrapper .pagination{
+#container .pagination{
 	margin-bottom: 70px;
 }
 .nosupport{
