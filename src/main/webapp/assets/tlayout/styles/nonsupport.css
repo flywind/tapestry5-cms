@@ -1,0 +1,10 @@
+body{text-align: center;background-color: #f8f8f8;}
+#container{display:none;}
+.nosupport{display:block;}
+.my-error{text-align: left;width:1000px;height:350px; margin:100px auto; background-color:#fff; padding:80px 80px 100px 80px; color:#404040;font-family:microsoft yahei;}
+.error-left-icon{ width:180px; height:350px; background:url(../../images/404.png) no-repeat left top; float:left;}
+.error-right-icon{ width:600px; float:right; line-height:23px;}
+.error-right-icon h2{ font-size:20px; margin-top:20px;}
+.error-right-top{ margin-top:15px;color:#999;}
+.my-error ul{list-style: none;padding-left:0;}
+.body-inner, .quick_floor{display: none;}
