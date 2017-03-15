@@ -22,9 +22,12 @@ var _hmt = _hmt || [];
 })();
 </script>
 	</head>
-	<style type="text/css">
-		
-	</style>
+<style type="text/css">
+.pagination ul  .active  a, .pagination ul  .active  span{
+	background-color: #d10219;
+    border: 1px solid #d10219;
+}
+</style>
 	<body>
 		<div class="my-error nosupport">
 			<div class="error-left-icon"></div>
@@ -42,7 +45,7 @@ var _hmt = _hmt || [];
 			</div>
 			<div class="clear"></div>
 		</div>
-		<div id="container" class="boxed-layout">
+		<div class="my-box" id="container">
 			<t:Header/>
 			<div class="boxed">
 				<t:body/>

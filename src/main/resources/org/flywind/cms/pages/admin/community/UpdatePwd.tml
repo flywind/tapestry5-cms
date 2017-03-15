@@ -1,6 +1,6 @@
 <html t:type="Layout" t:title="${message:create-posts}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
 	xmlns:p="tapestry:parameter">
-<div class="panel content">
+<div class="panel mar-top">
     <div class="panel-heading">
         <div class="panel-control">
             <ul class="nav nav-tabs">

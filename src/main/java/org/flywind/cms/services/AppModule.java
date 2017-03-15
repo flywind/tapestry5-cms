@@ -72,12 +72,12 @@ public class AppModule
     	//语言配置,种类可参考http://www.flywind.org/newtechnologydetail/185
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en,zh_CN");
         //产品模式：false时代表开发模式大多数修改不需要重启应用,编译部署时应设置为true
-        configuration.add(SymbolConstants.PRODUCTION_MODE, false);
-        configuration.add(SymbolConstants.COMBINE_SCRIPTS, false);
-    	configuration.add(SymbolConstants.COMPRESS_WHITESPACE, false);
-    	configuration.add(SymbolConstants.GZIP_COMPRESSION_ENABLED, false); 
-        configuration.add(SymbolConstants.COMPACT_JSON, false);
-        configuration.add(SymbolConstants.MINIFICATION_ENABLED, false);
+        configuration.add(SymbolConstants.PRODUCTION_MODE, true);
+        configuration.add(SymbolConstants.COMBINE_SCRIPTS, true);
+    	configuration.add(SymbolConstants.COMPRESS_WHITESPACE, true);
+    	configuration.add(SymbolConstants.GZIP_COMPRESSION_ENABLED, true); 
+        configuration.add(SymbolConstants.COMPACT_JSON, true);
+        configuration.add(SymbolConstants.MINIFICATION_ENABLED, true);
         //configuration.add(SymbolConstants.ENABLE_PAGELOADING_MASK, false);
         
         //定义资源路径

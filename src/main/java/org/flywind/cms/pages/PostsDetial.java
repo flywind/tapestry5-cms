@@ -19,7 +19,6 @@ import org.flywind.business.entities.cms.Posts;
 import org.flywind.business.services.cms.DiscussService;
 import org.flywind.business.services.cms.PostsService;
 import org.flywind.cms.base.AppBase;
-import org.springframework.aop.aspectj.annotation.LazySingletonAspectInstanceFactoryDecorator;
 
 public class PostsDetial extends AppBase {
 	

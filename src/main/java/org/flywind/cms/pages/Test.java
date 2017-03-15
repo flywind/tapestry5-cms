@@ -5,11 +5,5 @@ import org.flywind.cms.base.AppBase;
 
 public class Test extends AppBase {
 	
-	@Property
-	private String content;
 	
-	
-	public void afterRender(){
-		javaScriptSupport.require("test").invoke("hello");
-	}
 }

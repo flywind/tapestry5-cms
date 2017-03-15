@@ -19,7 +19,18 @@ public class FLink extends AppBase {
 	@Parameter(value="active",defaultPrefix = BindingConstants.LITERAL)
 	private String activeCls;
 	
+	@Property
+	@Parameter(defaultPrefix = BindingConstants.LITERAL)
+	private String iconCls;
+	
 	public boolean isCur(){
 		return componentResources.getPageName().equals(page);
+	}
+	
+	public boolean isItem(){
+		if(iconCls != null){
+			return true;
+		}
+		return false;
 	}
 }

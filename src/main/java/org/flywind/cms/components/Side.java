@@ -27,7 +27,7 @@ public class Side extends AppBase {
 		}
 		FPage page = new FPage();
 		page.setPageNumber(1);
-		page.setPageSize(8);
+		page.setPageSize(3);
 		page.setSortName("clicks");
 		page.setSortOrder("DESC");
 		return postsService.getAllPosts(shareposts, page, getCurrentLanguage());

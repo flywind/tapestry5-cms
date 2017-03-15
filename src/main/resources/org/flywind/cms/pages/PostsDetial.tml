@@ -1,93 +1,153 @@
 <html t:type="Layout" t:title="${posts.title}"
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
-	
-			<div class="ibox content">
-				<div class="ibox-content">
-					<div class="text-center article-title">
+	<div class="row mar-top">
+		<article class="post">
+			<header class="entry-header">
+				<h1 class="entry-title">
+					${posts.title}
+				</h1>
+			</header><!-- .entry-header -->
+			<div class="entry-content">
+				<div class="single-content">
+					<t:outputraw value="posts.content" />
+				</div>
+				<div class="article-close">
+					[
+					<a href="javascript:window.close();" class="text-danger" style="color:#e4393c">${message:close-label}</a>
+					]
+				</div>
+				<div class="clear"></div>
+				<div id="social">
+					<div class="social-main">
+						<span class="like">
+							<t:zone t:id="loveZone" id="loveZone">
+								<t:if test="userInfo">
+									<a class="favorite" t:type="eventlink" t:event="like" t:zone="loveZone"
+										t:context="[currentUserName,id]">
+										<i class="ion-heart"></i>
+										${posts.countVoter}
+									</a>
+									<p:else>
+										<a class="favorite">
+											<i class="ion-heart"></i>
+											${message:like-label} ${posts.countVoter}
+										</a>
+									</p:else>
+								</t:if>
+							</t:zone>
+						</span>
+						
+						<div class="clear"></div>
+					</div>
+					
+				</div>
+
+				<footer class="single-footer">
+					<ul class="single-meta">
+						<li class="views">
+
+							<i class="fa fa-comment-o"></i>
+							${posts.countDiscuss}
+
+						</li>
+						<li class="views">
+							<i class="fa fa-eye"></i>
+							${posts.clicks}
+						</li>
+
+					</ul>
+					<div id="fontsize">
+
 						<a class="text-muted mar-pixe-r10" href="#;">
 							<i class="fa fa-user mar-pixe-r5"></i>
 							${posts.author}
 						</a>
 						<span class="text-muted">
 							<i class="fa fa-clock-o mar-pixe-r5"></i>
-							<t:output format="dateFormat" value="posts.lastUpdateTime"/>
+							<t:output format="dateFormat" value="posts.lastUpdateTime" />
 						</span>
-						<t:zone t:id="loveZone" id="loveZone">
-						<t:if test="userInfo">
-							<a class="btn btn-xs btn-default btn-rounded pull-right" t:type="eventlink" t:event="like" t:zone="loveZone" t:context="[currentUserName,id]"><i class="ion-heart"></i> ${posts.countVoter}</a>
-							<p:else>
-								<button class="btn btn-xs btn-default btn-rounded ion-heart pull-right" disabled="disabled"> ${posts.countVoter}</button>
-							</p:else>
-						</t:if>
-						</t:zone>
-				
-						<h1 style="font-size:28px;">${posts.title}</h1>
+
 					</div>
-	
-					<div class="article-content"><t:outputraw value="posts.content"/></div>
-					<div class="article-close">[ <a href="javascript:window.close();" class="text-danger">${message:close-label}</a> ]</div>
-					
-						<div class="row">
-							<div class="col-md-6">
-								<h5>${message:tags-label}:</h5>
-								<ul class="tag-list" style="padding: 0">
-			                        <li><a href="#;" t:type="eventlink" t:event="go" t:context="${posts.tagId}"><i class="fa fa-tag"></i> ${posts.tagName}</a></li>
-			                    </ul>
-							</div>
-							<div class="col-md-6">
-								<div class="small text-right">
-									<h5>${message:stats-label}:</h5>
-									<div>
-										<i class="ion-reply">
-										</i>
-										${posts.countDiscuss} ${message:discuss-label}
-									</div>
-									<i class="fa fa-eye">
-									</i>
-									${posts.clicks} ${message:views-label}
-								</div>
-							</div>
+					<div class="single-cat-tag">
+						<hanla></hanla>
+						<div class="single-cat">
+							<a href="#;" t:type="eventlink" t:event="go" t:context="${posts.tagId}">
+								<i class="fa fa-tag"></i>
+								${posts.tagName}
+							</a>
 						</div>
-
-						<div class="row">
-							<div class="col-lg-12 article-comments">
-							
-								<t:if test="discusses">
-								<h2>${posts.countDiscuss} ${message:discuss-label}</h2>
-								<ul class="list-unstyled media-block">
-									<t:loop source="discusses" value="discuss">
-		                            <li class="mar-btm">
-		                                <div class="media-left">
-		                                    <img alt="${discuss.discussUser.userName}" src="${discuss.discussUser.picUrl}" class="img-circle img-sm" />
-		                                </div>
-		                                <div class="media-body pad-hor">
-		                                    <div class="speech">
-		                                        <a href="#" class="media-heading">${discuss.author}</a>
-		                                        <p>${discuss.message}</p>
-		                                        <small class="text-muted"><t:output format="hourFormat" value="discuss.lastUpdateTime"/> - <t:output format="dFormat" value="discuss.lastUpdateTime"/></small>
-		                                    </div>
-		                                </div>
-		                            </li>
-		                            </t:loop>
-					         </ul>
-								</t:if>
-								
-								<t:if test="userInfo">
-		                    	<t:form t:id="commentForm" autofocus="false">
-		                    	<t:alerts showDismissAll="false"/>
-		                        <textarea t:validate="required,maxLength=400" style="height:110px;" type="text"  t:type="textarea" t:id="message"></textarea>
-		                        <div class="mar-top clearfix">
-		                            <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="ion-reply icon-fw"></i> ${message:reply-submit}</button>
-		                        </div>
-		                        </t:form>
-				                </t:if>
-
-
-							</div>
-						</div>
-
-
-				</div>
+					</div>
+				</footer>
+				<div class="clear"></div>
 			</div>
-	
+		</article>
+
+
+		<div id="comments" class="comments-area">
+			<t:if test="userInfo">
+			<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">
+					${message:add-reply}
+				</h3>
+				
+						<t:form t:id="commentForm" autofocus="false">
+							<t:alerts showDismissAll="false" />
+							<textarea t:validate="required,maxLength=400" style="height:110px;"
+								type="text" t:type="textarea" t:id="message"></textarea>
+							<div class="mar-top clearfix">
+								<button class="btn btn-sm btn-primary pull-right" type="submit">
+									<i class="ion-reply icon-fw"></i>
+									${message:reply-submit}
+								</button>
+							</div>
+						</t:form>
+					
+				
+			</div> 
+			</t:if>
+			<h2 class="comments-title">${posts.countDiscuss} ${message:discuss-label}</h2>
+			<div class="clear"></div>
+			<ol class="comment-list">
+				
+				<li class="comment">
+				<t:loop source="discusses" value="discuss">
+					<div class="comment-body pad-btm">
+						<div class="comment-author vcard">
+								<div class="row">
+									<div class="col-sm-1" style="max-width: 60px;">
+										<img alt="${discuss.discussUser.userName}" src="${discuss.discussUser.picUrl}" class="img-circle img-sm" />
+									</div>
+									<div class="col-sm-11">
+										<b>
+											<a href="#;">${discuss.author}</a>
+										</b>
+										
+										<span class="comment-meta">
+											<t:output format="hourFormat" value="discuss.lastUpdateTime" />
+													-
+													<t:output format="dFormat" value="discuss.lastUpdateTime" />
+										</span>
+										<p>
+											${discuss.message}
+										</p>
+									</div>
+								</div>
+			
+						</div>
+						
+					</div>
+					</t:loop>
+				</li>
+				
+			</ol>
+			
+			<div class="clear"></div>
+		</div>
+
+
+
+
+
+	</div>
+
 </html>

@@ -29,8 +29,8 @@ public class Layout extends AppBase {
 	private Asset t5baseCss;
 	
 	@Inject
-	@Path("context:assets/tlayout/styles/themes/theme-c-light2.css")
-	private Asset themeclight;
+	@Path("context:assets/tlayout/styles/index.css")
+	private Asset indexCss;
 	
 	@Inject
 	@Path("context:assets/tlayout/styles/nonsupport.css")
@@ -41,7 +41,7 @@ public class Layout extends AppBase {
 	
 	public void setupRender(){
 		javaScriptSupport.importStylesheet(t5baseCss);
-		javaScriptSupport.importStylesheet(themeclight);
+		javaScriptSupport.importStylesheet(indexCss);
 		javaScriptSupport.importStylesheet(new StylesheetLink(nonsupportCss, new StylesheetOptions().withCondition("lt IE 10")));
 		
 		SystemSeting  querySysSeting = systemSetingService.querySysSetingByCustomerCode("0755");
