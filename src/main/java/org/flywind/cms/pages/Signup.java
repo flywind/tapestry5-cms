@@ -76,9 +76,9 @@ public class Signup extends AppBase {
 		spec.put("checkUser", componentResources.createEventLink("checkUser").toAbsoluteURI());
 		spec.put("create", componentResources.createEventLink("createUser").toAbsoluteURI());
 		if("zh-cn".equalsIgnoreCase(getCurrentLanguage())){
-			spec.put("index", contextPath + "/zh_CN/admin/Index");
+			spec.put("index", contextPath + "/zh_CN/Start");
 		}else{
-			spec.put("index", contextPath + "/en/admin/Index");
+			spec.put("index", contextPath + "/en/Start");
 		}
 		javaScriptSupport.require("inits/signup").invoke("init").with(spec);
 	}
