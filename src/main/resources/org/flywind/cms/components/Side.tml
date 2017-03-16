@@ -19,38 +19,6 @@
 	<div class="t-panel">
 		<div class="t-panel-heading">
 			<div class="t-panel-title">
-				<i class="ion-star mar-pixe-r10"></i>${message:hot-posts}
-			</div>
-		</div>
-		<div class="t-panel-body" style="padding-top:0">
-			<ul class="t-list">
-				<t:loop source="findShare" value="shareposts">
-					<li>
-						<span class="thumbnail">
-							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
-								t:context="${shareposts.id}" title="${shareposts.title}">
-								<img src="${shareposts.picUrl}" class="attachment- size- wp-post-image"
-									alt="" />
-							</a>
-						</span>
-						<span class="hot-title">
-							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
-								t:context="${shareposts.id}" title="${shareposts.title}">${shareposts.title}</a>
-						</span>
-						<span class="views">
-							<i class="fa fa-eye"></i>
-							${shareposts.clicks}
-						</span>
-						<i class="fa ion-heart"> ${shareposts.countVoter}</i>
-					</li>
-				</t:loop>
-			</ul>
-
-		</div>
-	</div>
-	<div class="t-panel">
-		<div class="t-panel-heading">
-			<div class="t-panel-title">
 				<i class="ion-laptop mar-pixe-r10"></i>${message:t5-tutorials}
 			</div>
 		</div>
@@ -99,6 +67,39 @@
 	<div class="t-panel">
 		<div class="t-panel-heading">
 			<div class="t-panel-title">
+				<i class="ion-star mar-pixe-r10"></i>${message:hot-posts}
+			</div>
+		</div>
+		<div class="t-panel-body" style="padding-top:0">
+			<ul class="t-list">
+				<t:loop source="findShare" value="shareposts">
+					<li>
+						<span class="thumbnail">
+							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
+								t:context="${shareposts.id}" title="${shareposts.title}">
+								<img src="${shareposts.picUrl}" class="attachment- size- wp-post-image"
+									alt="" />
+							</a>
+						</span>
+						<span class="hot-title">
+							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
+								t:context="${shareposts.id}" title="${shareposts.title}">${shareposts.title}</a>
+						</span>
+						<span class="views">
+							<i class="fa fa-eye"></i>
+							${shareposts.clicks}
+						</span>
+						<i class="fa ion-heart"> ${shareposts.countVoter}</i>
+					</li>
+				</t:loop>
+			</ul>
+
+		</div>
+	</div>
+	
+	<div class="t-panel">
+		<div class="t-panel-heading">
+			<div class="t-panel-title">
 				<i class="ion-card mar-pixe-r10"></i>${message:hot-job}
 			</div>
 		</div>
@@ -128,51 +129,6 @@
 
 		</div>
 	</div>
-	<!-- <div class="panel"> <div class="panel-body"> <div class="row"> <div 
-		class="col-xs-6 col-sm-12 col-md-6"> <a class="btn btn-success btn-block" 
-		t:type="pagelink" t:page="admin/community/CreatePosts"><i class="ion-plus"></i><t:widgets.FCharacter/>${message:create-posts}</a> 
-		</div> <div class="col-xs-6 col-sm-12 col-md-6"> <a class="btn btn-default 
-		btn-block" t:type="pagelink" t:page="admin/community/PostsList"><i class="fa 
-		fa-pencil"></i><t:widgets.FCharacter/>${message:management-posts}</a> </div> 
-		</div> </div> </div> <div class="panel"> <div class="panel-heading"> <div 
-		class="panel-title">${message:t5-tutorials}</div> </div> <div class="panel-body"> 
-		<div class="list-group bord-no" style="margin-bottom:0;"> <div class="row"> 
-		<div class="col-xs-6"><a class="list-group-item" href="#" target="_blank" 
-		t:type="eventlink" t:event="linka">TapestryStart V1.0</a></div> <div class="col-xs-6"><a 
-		class="list-group-item" href="#" target="_blank" t:type="eventlink" t:event="linkb">TapestryStart 
-		V1.1</a></div> </div> <div class="row"> <div class="col-xs-6"><a class="list-group-item" 
-		href="#" target="_blank" t:type="eventlink" t:event="linkc">Tapestry CMS</a></div> 
-		<div class="col-xs-6"><a class="list-group-item" href="#" target="_blank" 
-		t:type="eventlink" t:event="linkd">Tapestry widgets</a></div> </div> <div 
-		class="row"> <div class="col-xs-6"><a class="list-group-item" href="#" target="_blank" 
-		t:type="eventlink" t:event="linke">Tapestry 5.4</a></div> <div class="col-xs-6"><a 
-		class="list-group-item" href="#" target="_blank" t:type="eventlink" t:event="linkf">Tapestry 
-		5 video</a></div> </div> </div> </div> </div> <div class="panel"> Panel heading 
-		<div class="panel-heading"> <div class="panel-control"> <ul class="nav nav-tabs"> 
-		<li class="active"><a href="#hot-share" data-toggle="tab" aria-expanded="true">${message:hot-posts}</a></li> 
-		<li class=""><a href="#hot-job" data-toggle="tab" aria-expanded="false">${message:hot-job}</a></li> 
-		</ul> </div> <h3 class="panel-title">${message:three-month-in}</h3> </div> 
-		Panel body <div class="panel-body"> <div class="tab-content"> <div class="tab-pane 
-		fade active in" id="hot-share"> <div class="list-group bg-trans"> <t:loop 
-		source="findShare" value="shareposts"> <a href="#" class="list-group-item" 
-		target="blank" t:type="pagelink" t:page="PostsDetial" t:context="${shareposts.id}" 
-		title="${shareposts.title}"> <div class="media-left pos-rel"> <img class="img-circle 
-		img-xs" src="${shareposts.user.picUrl}" alt="${shareposts.author}"/> </div> 
-		<div class="media-body"> <p class="mar-no">${shareposts.title}</p> <small 
-		class="text-muted mar-pixe-r10">${shareposts.author}</small> <small class="text-muted 
-		mar-pixe-r10"><i class="fa fa-clock-o"></i> ${shareposts.timeAgo}</small> 
-		<small class="text-muted"><i class="ion-heart"></i> ${shareposts.countVoter}</small> 
-		</div> </a> </t:loop> </div> </div> <div class="tab-pane fade" id="hot-job"> 
-		<div class="list-group bg-trans"> <t:loop source="findjob" value="jobposts"> 
-		<a href="#" class="list-group-item" target="blank" t:type="pagelink" t:page="PostsDetial" 
-		t:context="${jobposts.id}" title="${jobposts.title}"> <div class="media-left 
-		pos-rel"> <img class="img-circle img-xs" src="${jobposts.user.picUrl}" alt="${jobposts.author}"/> 
-		</div> <div class="media-body"> <p class="mar-no">${jobposts.title}</p> <small 
-		class="text-muted mar-pixe-r10">${jobposts.author}</small> <small class="text-muted 
-		mar-pixe-r10"><i class="fa fa-clock-o"></i> ${jobposts.timeAgo}</small> <small 
-		class="text-muted"><i class="ion-heart"></i> ${jobposts.countVoter}</small> 
-		</div> </a> </t:loop> </div> </div> </div> </div> </div> -->
-
-
+	
 
 </t:container>
