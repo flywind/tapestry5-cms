@@ -81,6 +81,7 @@ public class UpdatePosts extends AppBase {
 		}
 		
 		if(meForm.isValid()){
+			newPicUrl = null;
 			posts = postsService.getPostsById(id);
 			oldPic = posts.getPicUrl();
 		}
