@@ -1,4 +1,4 @@
-<html t:type="Layout" t:title="${message:create-posts}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+<html t:type="Layout" t:title="${message:settings-label}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
 	xmlns:p="tapestry:parameter">
 <div class="panel mar-top">
     <div class="panel-heading">

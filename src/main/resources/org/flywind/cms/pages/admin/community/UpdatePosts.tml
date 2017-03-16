@@ -1,6 +1,6 @@
-<html t:type="Layout" t:title="${message:create-posts}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+<html t:type="Layout" t:title="${message:update-posts}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
 	xmlns:p="tapestry:parameter">
-<div class="tab-base">
+<div class="tab-base mar-top">
 					
     <!--Nav Tabs-->
     <ul class="nav nav-tabs">
@@ -30,6 +30,22 @@
 						<div class="col-sm-11">
 							<input class="form-control" t:type="textfield"  t:id="title" value="posts.title" t:validate="required,maxLength=150,minLength=5"/>
 						</div>
+					</div>
+					<div class="form-group auto-height">
+					      <label class="col-sm-1 control-label">${message:smallImgurl-label}<span class="text-danger"></span>${message:common-colon}</label>
+					      <div class="col-sm-11">
+					        <div class="f-img mar-pixe-r10">
+					        	<t:zone t:id="uploadImgZone" id="uploadImgZone">
+					        		<t:if test="newPicUrl">
+					        			<img width="90" height="90" src="${newPicUrl}"/>
+					        		</t:if>
+					        		<img width="90" height="90" src="${oldPic}"/>
+					        	</t:zone>
+					        </div>
+					        <div class="f-upload pad-pixe-t25">
+					        	<t:widgets.fajaxUpload t:id="uploadImage" t:itemCls="fa fa-upload mar-pixe-r5" t:multiple="false" t:allowedExtensions="[jpg, png, gif]" t:sizeLimit="0.1M"/>
+					        </div>
+					      </div>     
 					</div>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">${message:categoryId-label}${message:common-colon}<span class="text-danger">${message:common-all}</span></label>

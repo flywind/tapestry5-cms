@@ -142,6 +142,10 @@ public class AppBase {
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	}
 	
+	public Format getYFormat(){
+		return new SimpleDateFormat("yyyy-MM-dd");
+	}
+	
 	public Format getMdFormat(){
 		return new SimpleDateFormat("MM-dd HH:mm");
 	}

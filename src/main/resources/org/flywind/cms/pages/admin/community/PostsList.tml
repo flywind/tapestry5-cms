@@ -1,4 +1,4 @@
-<html t:type="Layout" t:title="${message:create-posts}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+<html t:type="Layout" t:title="${message:management-posts}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
 	xmlns:p="tapestry:parameter">
 <style>
 .title-limit{
@@ -21,7 +21,7 @@
     <div class="panel-heading">
         <div class="panel-control">
             <ul class="nav nav-tabs">
-                <li><a href="#;" t:type="pagelink" style="color:#fff;" t:page="admin/community/CreatePosts">${message:create-posts}</a></li>
+                <li><a href="#;" t:type="pagelink" t:page="admin/community/CreatePosts">${message:create-posts}</a></li>
                 <li class="active"><a href="#;" t:type="pagelink" t:page="admin/community/PostsList">${message:management-posts}</a></li>
                 <li><a href="#;" t:type="pagelink" t:page="admin/community/Settings">${message:settings-label}</a></li>
                 <li><a href="#;" t:type="pagelink" t:page="admin/community/UpdatePwd">${message:account-label}</a></li>

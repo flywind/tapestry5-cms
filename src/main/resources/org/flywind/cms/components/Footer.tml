@@ -1,5 +1,7 @@
 <t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
  xmlns:p="tapestry:parameter">
-<div class="footer"><t:if test="cn">${systemSeting.copyright}<p:else>${systemSeting.copyrightEn}</p:else>
-      </t:if></div>
+<div class="footer">
+<span class="mar-pixe-r10"><t:if test="cn">${systemSeting.copyright}<p:else>${systemSeting.copyrightEn}</p:else></t:if></span>
+      <a href="${systemSeting.icplink}" target="_blank">${systemSeting.icp}</a>
+</div>
 </t:container>

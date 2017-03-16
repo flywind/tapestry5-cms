@@ -3,12 +3,12 @@
 	<div class="t-panel">
 		<div class="t-panel-body">
 			<div class="row">
-				<div class="col-xs-6 col-sm-12 col-md-6">
+				<div class="col-xs-6 col-sm-12 col-md-6" data-animate="pulse">
 					<a class="btn btn-success btn-block" href="#;" t:type="pagelink" t:page="admin/community/createposts">
 						<i class="ion-plus"></i> ${message:create-posts}
 					</a>
 				</div>
-				<div class="col-xs-6 col-sm-12 col-md-6">
+				<div class="col-xs-6 col-sm-12 col-md-6" data-animate="pulse">
 					<a class="btn btn-default btn-block" href="#;" t:type="pagelink" t:page="admin/community/postslist">
 						<i class="fa fa-pencil"></i> ${message:management-posts}
 					</a>
@@ -19,11 +19,10 @@
 	<div class="t-panel">
 		<div class="t-panel-heading">
 			<div class="t-panel-title">
-				<i class="ion-star mar-pixe-r10"></i>
-				${message:hot-posts}
+				<i class="ion-star mar-pixe-r10"></i>${message:hot-posts}
 			</div>
 		</div>
-		<div class="t-panel-body">
+		<div class="t-panel-body" style="padding-top:0">
 			<ul class="t-list">
 				<t:loop source="findShare" value="shareposts">
 					<li>
@@ -52,11 +51,10 @@
 	<div class="t-panel">
 		<div class="t-panel-heading">
 			<div class="t-panel-title">
-				<i class="ion-laptop mar-pixe-r10"></i>
-				${message:t5-tutorials}
+				<i class="ion-laptop mar-pixe-r10"></i>${message:t5-tutorials}
 			</div>
 		</div>
-		<div class="t-panel-body">
+		<div class="t-panel-body" style="padding-top:0">
 			<ul class="t-list2">
 				<li>
 					<i class="fa fa-angle-right text-gry-color mar-pixe-r5"></i>
@@ -101,11 +99,10 @@
 	<div class="t-panel">
 		<div class="t-panel-heading">
 			<div class="t-panel-title">
-				<i class="ion-card mar-pixe-r10"></i>
-				${message:hot-job}
+				<i class="ion-card mar-pixe-r10"></i>${message:hot-job}
 			</div>
 		</div>
-		<div class="t-panel-body">
+		<div class="t-panel-body" style="padding-top:0">
 			<ul class="t-list">
 				<t:loop source="findJob" value="jobposts">
 					<li>

@@ -6,7 +6,7 @@
 			<t:loop source="postss" value="posts">
 			<div class="article-item">
 				<div class="imageview">
-				<t:if test="posts.hasPic">
+				<t:if test="posts.picUrl">
 					<a href="#;" t:type="pagelink" target="_blank" t:page="PostsDetial" t:context="${posts.id}" title="${posts.title}"><img src="${posts.picUrl}"/></a>
 					<span class="tag-view"><a href="#;" t:type="eventlink" t:event="go" t:context="${posts.tagId}"><i class="fa fa-tag"></i> ${posts.tagName}</a></span>
 					<p:else>
@@ -31,7 +31,7 @@
 					</span> 
 					<div class="clear"></div> 
 				</div>
-				<span class="ac-more"><a href="#;" t:type="pagelink" target="_blank" t:page="PostsDetial" t:context="${posts.id}" title="${posts.title}">${message:view-posts}</a></span>
+				<span class="ac-more"><a href="#;" t:type="pagelink" target="_blank" t:page="PostsDetial" t:context="${posts.id}" title="${posts.title}" class="link">${message:view-posts}</a></span>
 			</div>
 			</t:loop>
 			</t:zone>

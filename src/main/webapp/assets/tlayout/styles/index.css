@@ -19,6 +19,9 @@ a:hover{
 #container.my-box .boxed{
 	margin: 0 auto;
 }
+#container.my-box #mybody{
+	margin-bottom: 60px;
+}
 @media(min-width: 1200px) {
 	#container.my-box .boxed{
     	max-width: 1128px;
@@ -276,7 +279,7 @@ a:hover{
 }
 
 .t-panel {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-color: #fff;
 }
 .t-pabel-title{
@@ -508,7 +511,7 @@ a:hover{
 }
 .comments-title {
     background: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     padding: 15px 20px;
     font-size: 14px;
 }
@@ -521,7 +524,11 @@ a:hover{
     word-break: break-all;
 }
 .comment-author {
-    color: #999;
+    color: #333;
+    line-height: 23px;
+}
+.comment-meta{
+	color:#999;
 }
 .vcard .avatar {
     float: left;
@@ -552,9 +559,17 @@ b{
     width: 100%;
     bottom: 0;
     margin-top: 20px;
+    position:fixed;
     padding: 10px 0;
+    background-color: #fff;
 }
 .article-close {
     padding: 10px 0 0;
     text-align: center;
+}
+.scroll-top.in{
+	background-color: #c40000;
+}
+.pace .pace-progress, .nano > .nano-pane > .nano-slider{
+	background-color: #c40000;
 }

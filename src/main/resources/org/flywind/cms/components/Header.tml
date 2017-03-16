@@ -3,7 +3,7 @@
 	<div class="header">
 		<div class="header-top">
 			<div class="boxed">
-				<span class="header-time">上午好！2017年3月14日 星期二</span>
+				<span class="header-time">${ampm} <t:output t:format="yFormat" value="today"/> ${week}</span>
 				<ul class="header-list pull-right">
 					<li><t:FLocaleBar/></li>
 					<li class="spacer"></li>

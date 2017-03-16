@@ -33,6 +33,10 @@ public class Layout extends AppBase {
 	private Asset indexCss;
 	
 	@Inject
+	@Path("context:assets/tlayout/styles/animate.css")
+	private Asset animateCss;
+	
+	@Inject
 	@Path("context:assets/tlayout/styles/nonsupport.css")
 	private Asset nonsupportCss;
 	
@@ -42,6 +46,7 @@ public class Layout extends AppBase {
 	public void setupRender(){
 		javaScriptSupport.importStylesheet(t5baseCss);
 		javaScriptSupport.importStylesheet(indexCss);
+		javaScriptSupport.importStylesheet(animateCss);
 		javaScriptSupport.importStylesheet(new StylesheetLink(nonsupportCss, new StylesheetOptions().withCondition("lt IE 10")));
 		
 		SystemSeting  querySysSeting = systemSetingService.querySysSetingByCustomerCode("0755");

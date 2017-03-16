@@ -105,6 +105,7 @@
 				
 			</div> 
 			</t:if>
+			<t:if test="discusses">
 			<h2 class="comments-title">${posts.countDiscuss} ${message:discuss-label}</h2>
 			<div class="clear"></div>
 			<ol class="comment-list">
@@ -142,6 +143,7 @@
 			</ol>
 			
 			<div class="clear"></div>
+			</t:if>
 		</div>
 
 
