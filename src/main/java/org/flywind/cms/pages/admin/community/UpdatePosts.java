@@ -197,6 +197,7 @@ public class UpdatePosts extends AppBase {
 				posts.setPicUrl(picUrl);
 			}
 			postsService.updatePosts(posts);
+			picUrl = null;
 		} catch (Exception e) {
 			String error = messages.get("update-error");
 			alertManager.error(error);
