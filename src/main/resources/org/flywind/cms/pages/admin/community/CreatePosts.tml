@@ -54,7 +54,8 @@
 					<div class="form-group auto-height" style="min-height:388px;">
 						<label class="col-sm-1 control-label">${message:content-label}${message:common-colon}</label>
 						<div class="col-sm-11">
-							<input class="form-control" t:validate="required" style="height:300px;border:none;display:none;" type="text"  t:type="textarea" t:id="content" value="posts.content" t:mixins="widgets/FSummernote" FSummernote.tools="full" FSummernote.uploadToServer="true" FSummernote.url="/rest/file/upload" t:language="${lang}"/>
+							<!-- <input class="form-control" t:validate="required" style="height:300px;border:none;display:none;" type="text"  t:type="textarea" t:id="content" value="posts.content" t:mixins="widgets/FSummernote" FSummernote.tools="full" FSummernote.uploadToServer="true" FSummernote.url="/rest/file/upload" t:language="${lang}"/> -->
+							<input class="form-control" t:validate="required" style="width:100%;min-width:800px;height:360px;display:none;" type="text"  t:type="textarea" t:id="content" value="posts.content" t:mixins="kissy/Editor" Editor.exclude="flash,xiami-music,video" Editor.url="/rest/file/kissyupload" Editor.sizeLimit="300"/>
 						</div>
 					</div>
 					<div class="form-group col-sm-offset-1 text-center">

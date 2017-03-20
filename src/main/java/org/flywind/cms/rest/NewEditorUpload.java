@@ -46,6 +46,11 @@ public class NewEditorUpload {
 	@Inject
 	private Request request;
 
+	/**
+	 * Summernote 上传图片文件的Rest接收方法
+	 * @param input
+	 * @return
+	 */
 	@POST
 	@Path("/upload")
 	@Consumes("multipart/form-data")
@@ -168,5 +173,70 @@ public class NewEditorUpload {
 
 	protected final HttpServletRequest getRequest() {
 		return requestGlobals.getHTTPServletRequest();
+	}
+	
+	/**
+	 * 淘宝的KISSY editor 上传图片文件的Rest接收方法
+	 * @param input
+	 * @return
+	 */
+	@POST
+	@Path("/kissyupload")
+	@Consumes("multipart/form-data")
+	@Produces({"application/json"})
+	public String upload(MultipartFormDataInput input) {
+
+		//File save path
+		String savePath = applicationGlobals.getServletContext().getRealPath("/uploadImages/editor/") + "\\";
+
+		//File save file to server, back url
+		String saveUrl = getRequest().getContextPath() + "/uploadImages/editor/";
+
+		File uploadDir = new File(savePath);
+		if (!uploadDir.exists()) {
+			uploadDir.mkdirs();
+		}
+		
+		Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
+		List<InputPart> inputParts = uploadForm.get("Filedata");
+
+		for (InputPart inputPart : inputParts) {
+			try {
+	
+				MultivaluedMap<String, String> header = inputPart.getHeaders();
+				
+				//You can get file name like this:
+				String fileName = getFileName(header);
+				String fileSuffix = fileName.substring(fileName.lastIndexOf(".")+1,fileName.length());
+	
+				//convert the uploaded file to inputstream
+				InputStream inputStream = inputPart.getBody(InputStream.class,null);
+	
+				byte [] bytes = IOUtils.toByteArray(inputStream);
+	
+				//constructs upload file path
+				/*fileName = savePath + fileName;
+				/writeFile(bytes,fileName);*/
+				
+				//Create new file name
+				SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+				String newFileName = df.format(new Date()) +"."+ fileSuffix;
+				writeFile(bytes,savePath+newFileName);
+	
+				JSONObject json = new JSONObject();  
+		        json.put("status", "0");
+		        json.put("imgUrl", saveUrl + newFileName);
+		        return json.toCompactString();
+	
+			  } catch (IOException e) {
+				JSONObject json = new JSONObject(); 
+				json.put("status", "1");
+		        json.put("error", "Upload file error!");
+		        return json.toCompactString();
+			  }
+
+		}
+
+		return "unknown";
 	}
 }

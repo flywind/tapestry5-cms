@@ -169,6 +169,12 @@
 		<!-- cms dao and services end -->
 		
 		<dependency>
+		  <groupId>org.flywind</groupId>
+		  <artifactId>tapestry5-kissy</artifactId>
+		  <version>${t5.kissy.version}</version>
+		</dependency>
+		
+		<dependency>
 		    <groupId>org.apache.tapestry</groupId>
 		    <artifactId>tapestry-webresources</artifactId>
 		    <version>5.4.1</version>
@@ -238,5 +244,6 @@
         <easymock-release-version>3.0</easymock-release-version>
         <spring.version>4.0.3.RELEASE</spring.version>
         <cms.business.version>1.0</cms.business.version>
+        <t5.kissy.version>1.0</t5.kissy.version>
     </properties>
 </project>
