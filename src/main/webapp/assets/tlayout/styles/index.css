@@ -385,6 +385,12 @@ a:hover{
     font-size: 1.5rem;
     line-height: 1.8
 }
+.single-content a:link,.single-content a:visited{
+	color: #e4393c;
+}
+.single-content a:hover{
+	text-decoration: underline;
+}
 .single-meta {
     position: absolute;
     top: 15px;
