@@ -92,8 +92,7 @@
 				
 						<t:form t:id="commentForm" autofocus="false">
 							<t:alerts showDismissAll="false" />
-							<textarea t:validate="required,maxLength=400" style="height:110px;"
-								type="text" t:type="textarea" t:id="message"></textarea>
+							<t:textarea t:validate="required" style="height:300px;border:none;display:none;" t:mixins="kissy/Editor" Editor.exclude="flash,xiami-music,video,source-area,font-family,font-size,checkbox-source-area,image,fore-color,back-color,back-color,undo,indent,outdent,unordered-list,ordered-list,element-path,justify-left,justify-center,justify-right,table,smiley,preview,page-break,heading" t:id="message"/>
 							<div class="mar-top clearfix">
 								<button class="btn btn-sm btn-primary pull-right" type="submit">
 									<i class="ion-reply icon-fw"></i>
@@ -129,7 +128,7 @@
 													<t:output format="dFormat" value="discuss.lastUpdateTime" />
 										</span>
 										<p>
-											${discuss.message}
+											<t:outputraw value="discuss.message"/>
 										</p>
 									</div>
 								</div>
@@ -145,10 +144,6 @@
 			<div class="clear"></div>
 			</t:if>
 		</div>
-
-
-
-
 
 	</div>
 

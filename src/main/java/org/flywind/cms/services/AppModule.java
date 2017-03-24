@@ -78,6 +78,7 @@ public class AppModule
     	configuration.add(SymbolConstants.GZIP_COMPRESSION_ENABLED, false); 
         configuration.add(SymbolConstants.COMPACT_JSON, false);
         configuration.add(SymbolConstants.MINIFICATION_ENABLED, false);
+        configuration.add(SymbolConstants.FORM_CLIENT_LOGIC_ENABLED, true);
         //configuration.add(SymbolConstants.ENABLE_PAGELOADING_MASK, false);
         
         //定义资源路径
