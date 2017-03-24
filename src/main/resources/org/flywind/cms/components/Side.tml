@@ -71,31 +71,58 @@
 			</div>
 		</div>
 		<div class="t-panel-body" style="padding-top:0">
-			<ul class="t-list">
-				<t:loop source="findShare" value="shareposts">
+			<ul class="t-list hot-count">
+				<t:loop source="findShare" value="shareposts" index="index">
 					<li>
-						<span class="thumbnail">
-							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
-								t:context="${shareposts.id}" title="${shareposts.title}">
-								<img src="${shareposts.picUrl}" class="attachment- size- wp-post-image"
-									alt="" />
-							</a>
-						</span>
-						<span class="hot-title">
-							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
+						<t:if test="top">
+							<span class="li-icon li-icon-1">${num}</span>
+							<p:else>
+								<span class="li-icon">${num}</span>
+							</p:else>
+						</t:if>
+						
+						<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
 								t:context="${shareposts.id}" title="${shareposts.title}">${shareposts.title}</a>
-						</span>
-						<span class="views">
-							<i class="fa fa-eye"></i>
-							${shareposts.clicks}
-						</span>
-						<i class="fa ion-heart"> ${shareposts.countVoter}</i>
+								
 					</li>
 				</t:loop>
 			</ul>
 
 		</div>
 	</div>
+	<div class="t-panel">
+		<div class="t-panel-heading">
+			<div class="t-panel-title">
+				<i class="ion-happy mar-pixe-r10"></i>${message:site.hot}
+			</div>
+		</div>
+		<div class="t-panel-body" style="padding-top:0">
+			<ul class="t-list">
+				<t:loop source="siteHots" value="hot">
+					<li>
+						<span class="thumbnail">
+							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
+								t:context="${hot.id}" title="${hot.title}">
+								<img src="${hot.picUrl}" class="attachment- size- wp-post-image" alt="" />
+							</a>
+						</span>
+						<span class="hot-title">
+							<a href="#;" target="blank" t:type="pagelink" t:page="PostsDetial"
+								t:context="${hot.id}" title="${hot.title}">${hot.title}</a>
+						</span>
+						<span class="views">
+							<i class="fa fa-eye"></i>
+							${hot.clicks}
+						</span>
+						<i class="fa ion-heart"> ${hot.countVoter}</i>
+					</li>
+				</t:loop>
+			</ul>
+
+		</div>
+	</div>
+	
+	
 	
 	<div class="t-panel">
 		<div class="t-panel-heading">

@@ -51,7 +51,7 @@ public class Start extends AppBase {
 			posts.setIsHome(Boolean.TRUE);
 		}
 		FPage page = (FPage)request.getAttribute("page");
-		page.setSortName("lastUpdateTime");
+		page.setSortName("createTime");
 		page.setSortOrder("DESC");
 		postss = postsService.getAllPosts(posts, page,getCurrentLanguage());
 		

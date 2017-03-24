@@ -579,3 +579,46 @@ b{
 .pace .pace-progress, .nano > .nano-pane > .nano-slider{
 	background-color: #c40000;
 }
+.li-icon {
+    background: #ccc;
+    font-size: 12px;
+    color: #fff;
+    line-height: 180%;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+    border-radius: 2px
+}
+
+.li-icon-1,.li-icon-2,.li-icon-3 {
+    background: #c40000
+}
+
+.li-number {
+    float: left;
+    background: #c40000;
+    font-size: 12px;
+    color: #fff;
+    line-height: 150%;
+    margin: 4px 5px 0 0;
+    padding: 0 5px;
+    border-radius: 2px
+}
+
+.li-numbers {
+    float: left;
+    background: #ccc;
+    font-size: 12px;
+    color: #fff;
+    line-height: 150%;
+    margin: 4px 5px 0 0;
+    padding: 0 5px;
+    border-radius: 2px
+}
+.hot-count li {
+    width: 99%;
+    line-height: 28px;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

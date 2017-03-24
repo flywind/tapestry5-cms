@@ -33,7 +33,9 @@
 				            <a t:type="eventLink" t:event="reset" class="btn btn-default" t:zone="listZone"><i class="fa fa-eraser"></i> ${message:reset-btn}</a>
 				        </form>
 					</div>
-	
+					<t:security.hasPermission t:permission="posts:edit">
+						<t:widgets.FBootstrapTableBtn t:id="edit" cls="btn btn-info mar-pixe-r10 toolbarBtn" itemCls="fa fa-pencil mar-pixe-r5" linkType="page" text="${message:edit-btn}" url="PostsEdit" gridId="gridData" />
+					</t:security.hasPermission>
 					<t:security.hasPermission t:permission="posts:delete">
 						<t:widgets.FBootstrapTableBtn t:id="delete" zone="listZone" cls="btn btn-danger mar-pixe-r10 toolbarBtn" itemCls="fa fa-trash-o mar-pixe-r5" text="${message:del-btn}" url="${delUrl}" gridId="gridData"/>
 					</t:security.hasPermission>

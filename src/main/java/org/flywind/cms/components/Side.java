@@ -14,10 +14,30 @@ import org.flywind.widgets.core.dao.FPage;
 public class Side extends AppBase {
 
 	@Property
-	private Posts shareposts,jobposts;
+	private Posts shareposts,jobposts,hot;
 	
 	@Inject
 	private PostsService postsService;
+	
+	@Property
+	private int index;
+	
+	private int num;
+	
+	public List<Posts> getSiteHots(){
+		if(hot == null){
+			hot = new Posts();
+			hot.setIsHome(Boolean.TRUE);
+			hot.setCategoryId(Long.parseLong("2"));
+			hot.setIsHot(Boolean.TRUE);
+		}
+		FPage page = new FPage();
+		page.setPageNumber(1);
+		page.setPageSize(8);
+		page.setSortName("clicks");
+		page.setSortOrder("DESC");
+		return postsService.getAllPosts(hot, page, getCurrentLanguage());
+	}
 	
 	public List<Posts> getFindShare(){
 		if(shareposts == null){
@@ -27,7 +47,7 @@ public class Side extends AppBase {
 		}
 		FPage page = new FPage();
 		page.setPageNumber(1);
-		page.setPageSize(3);
+		page.setPageSize(8);
 		page.setSortName("clicks");
 		page.setSortOrder("DESC");
 		return postsService.getAllPosts(shareposts, page, getCurrentLanguage());
@@ -84,5 +104,16 @@ public class Side extends AppBase {
 			url = "http://cms.flywind.org/en/"+page;
 		}
 		return url;
+	}
+
+	public int getNum() {
+		return index + 1;
+	}
+	
+	public boolean isTop(){
+		if(index < 3){
+			return true;
+		}
+		return false;
 	}
 }
